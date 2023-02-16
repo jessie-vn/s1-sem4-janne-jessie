@@ -1,19 +1,24 @@
-body {background-color: #f6f6f6;}
-.logo {height: 60%;}
+body {background-color: #0d0d62;}
+.fluid-container {padding: 0;}
+.fluid-container .image { border-bottom: 2px solid white; }
+.fixed-row-bottom { position: absolute; bottom: 15px;}
 .logo .logo-box {
-    background-color: white;
-    border-radius: 50%;
-    padding: 15px;
-}
-.logo .logo-box .image-box img {
-    width: 40%;
-}
-.logo .started {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50%;
-    height: 20%;
-    margin: 25px;
-    margin-bottom: 55px;
+    top: 50px;
+    left: 15%;
+    background-color: #4d47e9;
+    border-radius: 50%;
+    width: 65%;
+    padding: 45px;
+    -webkit-box-shadow: 0 0 10px #fff;
+        box-shadow: 0 0 10px #fff;
 }
+.logo .logo-box .image-box img { width: 65%;}
+
+.started, .character { margin: 15px;}
+.started .text-box {
+    margin-top: 55px;
+}
+.started .image-box {margin-right: 15px;}
+.started .image-box img {margin-right: 15px;}
+.started .btn-box button i {color: white;}
