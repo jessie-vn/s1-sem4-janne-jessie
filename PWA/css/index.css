@@ -1,4 +1,4 @@
-body {background-color: #0d0d62;}
+body { margin: 0;}
 .fluid-container {padding: 0;}
 .fluid-container .image { border-bottom: 2px solid white; }
 .fixed-row-bottom { position: absolute; bottom: 15px;}

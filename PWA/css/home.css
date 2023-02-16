@@ -1,0 +1,39 @@
+.top-bar .text-box { 
+    width: 80%;
+    float: left;
+}
+.top-bar .image-box { 
+    width: 20%;
+    float: left;
+}
+.continue-watch, .something-new {
+    margin-top: 45px;
+    text-align: start;
+}
+.continue-watch .text-box h1, .something-new .text-box h1 {
+    font-weight: bold;
+    font-size: 15px;
+}
+.something-new .text-box p { font-size: 12px; }
+.continue-watch .movies, .something-new .movies {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.continue-watch .movies .movie:hover, 
+.something-new .movies .movie:hover {
+    box-shadow: 10px 5px 5px black;
+}
+.continue-watch .movies .movie, .something-new .movies .movie {
+    display: inline-block;
+    margin: 10px;
+    background-color: white;
+    width: 125px;
+    height: 150px;
+}
+   ::-webkit-scrollbar{
+        height: 8px;
+        width: 4px;
+        background: #f6f6f6;
+    }
