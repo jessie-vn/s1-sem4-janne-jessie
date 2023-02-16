@@ -1,0 +1,26 @@
+.vertical-center {
+    min-height: 85vh; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img{
+    max-height: 100px;
+    padding: 10px;
+    padding-bottom: 0px;
+  }
+  
+  button{
+    margin: 15px;
+  }
+
+  a{
+    text-decoration: none;
+    color: rgb(105, 101, 101);
+  }
+
+  a:hover{
+    color: black;
+  }
