@@ -1,0 +1,19 @@
+body {background-color: #f6f6f6;}
+.logo {height: 60%;}
+.logo .logo-box {
+    background-color: white;
+    border-radius: 50%;
+    padding: 15px;
+}
+.logo .logo-box .image-box img {
+    width: 40%;
+}
+.logo .started {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 20%;
+    margin: 25px;
+    margin-bottom: 55px;
+}
