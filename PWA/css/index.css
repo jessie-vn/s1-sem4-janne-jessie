@@ -16,9 +16,19 @@ body { margin: 0;}
 .logo .logo-box .image-box img { width: 65%;}
 
 .started, .character { margin: 15px;}
+.started { 
+    text-align: start;
+    margin: 0 25px 45px 25px;
+ }
 .started .text-box {
     margin-top: 55px;
 }
 .started .image-box {margin-right: 15px;}
 .started .image-box img {margin-right: 15px;}
 .started .btn-box button i {color: white;}
+.character {
+    width: 45%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
