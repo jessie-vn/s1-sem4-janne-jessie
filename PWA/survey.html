@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/ecef4a84e2.js" crossorigin="anonymous"></script>
+  <title>Binge Buddy</title>
+  <meta name="author" content="Jessie and Janne">
+  <meta name="description" content="An app that helps you choosing a serie">
+  <link rel="stylesheet" href="css/templates/layout.css" type="text/css">
+  <link rel="stylesheet" href="css/survey.css" type="text/css">
+  <link rel="stylesheet" href="css/home.css" type="text/css">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 top-bar">
+                <div class="text-box">
+                    <h1>You are logged in as:</h1>
+                    <p class="bold">Janne van Seggelen</p>
+                </div>
+                <div class="image-box">
+                    <img class="img-fluid" src="images/profiles/profile-picture.png" alt="Profile Picture">
+                </div>
+            </div>
+        </div>
+        <div class="row row-middle-center justify-content-center">
+            <div class="col-md-8">
+                <div id="category" class="category">
+                    <div class="title-box">
+                        <h1>We must ask you a couple questions to gather a nice couple movies for you</h1>
+                    </div>
+                    <div class="button-box">
+                        <button onclick="startSurvey()" type="button">Start survey <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div id="questions" class="questions">
+                    <div class="input-box">
+                        <label id="question-asked">What genre do you feel like watching?</label>
+                        <input id="question-input" type="text">
+                    </div>
+                    <div class="button-box">
+                        <button onclick="nextQuestion()" type="button">Next question <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div id="movies" class="movies">
+                    <h1>Thank you for entering the survey. We found these movies:</h1>
+                    <div class="movies-box">
+                        <a href="serie.html"><div class="movie">Serie 1</div></a>
+                        <a href="serie.html"><div class="movie">Serie 2</div></a>
+                        <a href="serie.html"><div class="movie">Serie 3</div></a>
+                        <a href="serie.html"><div class="movie">Serie 4</div></a>
+                        <a href="serie.html"><div class="movie">Serie 5</div></a>
+                    </div>
+                    <div class="button-box">
+                        <button onclick="redoSurvey()" type="button">Redo survey <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <script>
+        function startSurvey() {
+           document.getElementById('category').style.display = 'none';
+           document.getElementById('questions').style.display = 'block';
+        }
+        let questions = [ 
+                { question: "What genre do you feel like watching?", inputType: "text" },
+                { question: "How much seasons should it be?", inputType: "number" },
+                { question: "How much episodes should it be?", inputType: "number" },
+                { question: "Any actors that should be included?", inputType: "text" }
+            ];
+        let i = 1;
+        function nextQuestion() {
+            for (let idx = i; idx < questions.length;) {
+                if (idx === questions.length-1) {
+                    document.getElementById('movies').style.display = 'block';
+                    document.getElementById('questions').style.display = 'none';
+                }
+                document.getElementById('question-asked').innerHTML = questions[idx].question;
+                document.getElementById('question-input').type = questions[idx].inputType;
+                idx++
+                i = idx
+                break;
+            }
+        }
+        function redoSurvey() {
+            document.getElementById('questions').style.display = 'block';
+            document.getElementById('movies').style.display = 'none';
+            document.getElementById('question-asked').innerHTML = questions[0].question;
+            i = 1;
+        }
+    </script>
+</body>

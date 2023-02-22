@@ -12,7 +12,7 @@ h1 {
     font-size: 20px;
     color: white;
 }
-button {
+button, input[type="button"] {
     margin: 10px;
     text-align: center;
     color: white;

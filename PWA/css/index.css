@@ -19,6 +19,9 @@ body { margin: 0;}
 .started { 
     text-align: start;
     margin: 0 25px 45px 25px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
  }
 .started .text-box {
     margin-top: 55px;
@@ -31,4 +34,33 @@ body { margin: 0;}
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+/* responsive */
+@media screen and (min-width: 992px) { 
+    /*.fluid-container .image-box .image{
+        height: 200px;
+        max-width: auto;
+    }*/
+    .logo .logo-box { 
+        top: 100px;
+        width: 25%;
+        text-align: center;
+    }
+    .logo .started {
+        position: absolute;
+        top: 100px;
+        right: 15%;
+        font-size: 25px;
+        display: inline;
+        width: 35%;
+    }
+    .logo .started .text-box h1 {
+        font-size: 45px;
+    }
+    .character {
+        width: 45%;
+        position: absolute;
+        top: 100px;
+    }
 }

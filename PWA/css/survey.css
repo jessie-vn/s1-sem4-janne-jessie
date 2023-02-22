@@ -1,0 +1,48 @@
+.row-middle-center {
+    margin-top: 50%;
+}
+.questions, .movies {
+    display: none;
+}
+.questions .input-box label {
+    font-weight: bold;
+    justify-content: end;
+    font-size: 20px;
+}
+.questions .input-box input, .questions .input-box input:focus {
+    margin-bottom: 15px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: transparent;
+    outline: none;
+} 
+.movies .movies-box {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.movies .movies-box .movie:hover {
+    box-shadow: 10px 5px 5px black;
+}
+.movies .movies-box .movie {
+    display: inline-block;
+    margin: 10px;
+    background-color: white;
+    width: 125px;
+    height: 150px;
+    color: #0d0d62;
+}
+
+/* responsive */
+@media screen and (min-width: 992px) { 
+    .row-middle-center {
+        margin-top: 15%;
+    }
+}
+@media screen and (max-width: 992px) { 
+    .row-middle-center {
+        margin-top: 30%;
+    }
+}

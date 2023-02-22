@@ -33,16 +33,16 @@
                         <h1>Continue to watch ...</h1>
                     </div>
                     <div class="movies">
-                        <div class="movie">Serie 1</div>
-                        <div class="movie">Serie 2</div>
-                        <div class="movie">Serie 3</div>
-                        <div class="movie">Serie 4</div>
-                        <div class="movie">Serie 5</div>
-                        <div class="movie">Serie 6</div>
-                        <div class="movie">Serie 7</div>
-                        <div class="movie">Serie 8</div>
-                        <div class="movie">Serie 9</div>
-                        <div class="movie">Serie 10</div>
+                        <a href="serie.html"><div class="movie">Serie 1</div></a>
+                        <a href="serie.html"><div class="movie">Serie 2</div></a>
+                        <a href="serie.html"><div class="movie">Serie 3</div></a>
+                        <a href="serie.html"><div class="movie">Serie 4</div></a>
+                        <a href="serie.html"><div class="movie">Serie 5</div></a>
+                        <a href="serie.html"><div class="movie">Serie 6</div></a>
+                        <a href="serie.html"><div class="movie">Serie 7</div></a>
+                        <a href="serie.html"><div class="movie">Serie 8</div></a>
+                        <a href="serie.html"><div class="movie">Serie 9</div></a>
+                        <a href="serie.html"><div class="movie">Serie 10</div></a>
                     </div>
                 </div>
             </div>
@@ -53,19 +53,24 @@
                         <p>Here are some suggestions ...</p>
                     </div>
                     <div class="movies">
-                        <div class="movie">Serie 1</div>
-                        <div class="movie">Serie 2</div>
-                        <div class="movie">Serie 3</div>
-                        <div class="movie">Serie 4</div>
-                        <div class="movie">Serie 5</div>
+                        <a href="serie.html"><div class="movie">Serie 1</div></a>
+                        <a href="serie.html"><div class="movie">Serie 2</div></a>
+                        <a href="serie.html"><div class="movie">Serie 3</div></a>
+                        <a href="serie.html"><div class="movie">Serie 4</div></a>
+                        <a href="serie.html"><div class="movie">Serie 5</div></a>
                     </div>
                 </div>
                 <div class="btn-box">
-                    <button type="button">Find some more <i class="fa-solid fa-arrow-right"></i></button>
+                    <button onclick="navigateToSurvey()" type="button">Find some more <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="js/scripts.js" type="text/javascript"></script>
+    <script>
+        function navigateToSurvey() {
+            window.location.replace("survey.html");
+        }
+    </script>
 </body>
