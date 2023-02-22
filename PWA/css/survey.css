@@ -4,19 +4,6 @@
 .questions, .movies {
     display: none;
 }
-.questions .input-box label {
-    font-weight: bold;
-    justify-content: end;
-    font-size: 20px;
-}
-.questions .input-box input, .questions .input-box input:focus {
-    margin-bottom: 15px;
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid white;
-    background-color: transparent;
-    outline: none;
-} 
 .movies .movies-box {
     width: 100%;
     overflow-x: scroll;
