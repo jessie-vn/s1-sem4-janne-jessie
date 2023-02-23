@@ -29,7 +29,7 @@ button, input[type="button"] {
     justify-content: end;
     font-size: 20px;
 }
-.input-box input, .input-box input:focus {
+input, input:focus, .input-box input, .input-box input:focus {
     margin-bottom: 15px;
     width: 100%;
     border: none;
