@@ -37,3 +37,18 @@ button, input[type="button"] {
     background-color: transparent;
     outline: none;
 } 
+
+/* Account bar */
+.top-bar .text-box { 
+    width: 80%;
+    float: left;
+}
+.top-bar .image-box { 
+    width: 20%;
+    float: left;
+}
+@media screen and (min-width: 992px) { 
+    .top-bar .image-box { 
+        width: 10%;
+    }
+}

@@ -12,7 +12,6 @@
   <meta name="description" content="An app that helps you choosing a serie">
   <link rel="stylesheet" href="css/templates/layout.css" type="text/css">
   <link rel="stylesheet" href="css/survey.css" type="text/css">
-  <link rel="stylesheet" href="css/home.css" type="text/css">
   <link rel="manifest" href="manifest.json">
 </head>
 
@@ -63,6 +62,11 @@
                 </div>
             </div>
         </div>
+        <div class="row return-home">
+            <div class="button-box">
+                <button onclick="navigateToHome()" type="button"><i class="fa-solid fa-arrow-left"></i> Return to home</button>
+            </div>
+        </div>
     </div>
 
     <script src="js/scripts.js" type="text/javascript"></script>
@@ -79,16 +83,23 @@
             ];
         let i = 1;
         function nextQuestion() {
-            for (let idx = i; idx < questions.length;) {
-                if (idx === questions.length-1) {
+            for (let idx = i; idx <= questions.length;) {
+                if (idx === questions.length) {
                     document.getElementById('movies').style.display = 'block';
                     document.getElementById('questions').style.display = 'none';
+                    break;
                 }
-                document.getElementById('question-asked').innerHTML = questions[idx].question;
-                document.getElementById('question-input').type = questions[idx].inputType;
-                idx++
-                i = idx
-                break;
+                if (document.getElementById('question-input').value !== "") {
+                    document.getElementById('question-asked').innerHTML = questions[idx].question;
+                    document.getElementById('question-input').type = questions[idx].inputType;
+                    idx++
+                    i = idx
+                    break;
+                }
+                else { 
+                    alert("Empty answers are not allowed."); 
+                    break;
+                }
             }
         }
         function redoSurvey() {
@@ -97,5 +108,7 @@
             document.getElementById('question-asked').innerHTML = questions[0].question;
             i = 1;
         }
+
+        function navigateToHome() { window.location.replace("home.html"); }
     </script>
 </body>

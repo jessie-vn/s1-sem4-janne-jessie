@@ -1,11 +1,3 @@
-.top-bar .text-box { 
-    width: 80%;
-    float: left;
-}
-.top-bar .image-box { 
-    width: 20%;
-    float: left;
-}
 .continue-watch, .something-new {
     margin-top: 45px;
     text-align: start;
@@ -42,9 +34,6 @@
 
 /* responsive */
 @media screen and (min-width: 992px) { 
-    .top-bar .image-box { 
-        width: 10%;
-    }
     .continue-watch .movies, .something-new .movies {
         justify-content: center;
     }
