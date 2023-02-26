@@ -1,5 +1,5 @@
 .vertical-center {
-    min-height: 90vh; 
+    min-height: 100vh; 
     
     display: flex;
     align-items: center;
@@ -14,19 +14,25 @@
   
   button{
     margin: 15px;
+    background-color: #0d0d62;
   }
 
   a{
-    text-decoration: none;
-    color: rgb(105, 101, 101);
+    color: rgb(227, 227, 227);
   }
 
   a:hover{
-    color: black;
+    color: rgb(198, 198, 198);
   }
 
   form{
     padding: 30px;
-    background-color: rgb(226, 226, 226);
+    background-color: #4d47e9;
     border-radius: 25px;
   }
+
+  @media screen and (min-width: 992px) { 
+    form{
+      min-width: 500px;
+    }
+}
