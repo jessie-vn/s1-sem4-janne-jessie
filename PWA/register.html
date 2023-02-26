@@ -38,14 +38,19 @@
                         <label for="InputPassword2">Confirm password</label>
                         <input type="password" class="form-control" id="InputPassword2" placeholder="Confirm password">
                     </div>
-                    <button style="height:45px;width:130px" type="submit">Sign up</button>
-                        <p>Already have an account? <a href="#!">Login</a></p>
+                    <button style="height:45px;width:130px" onclick="register()" type="button">Sign up</button>
+                        <p>Already have an account? <a href="login.html">Login</a></p>
                 </form>
             </div>
         </div>
     </div>
 
     <script src="js/scripts.js" type="text/javascript"></script>
+    <script>
+        function register() {
+            window.location.replace("home.html");
+    }
+    </script>
 </body>
 
 </html>
