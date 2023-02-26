@@ -34,14 +34,19 @@
                         <label for="InputPassword">Password</label>
                         <input type="password" class="form-control" id="InputPassword" placeholder="Password">
                     </div>
-                    <button style="height:45px;width:130px" type="submit">Login</button>
-                        <p>No account? <a href="#!">Register</a></p>
+                    <button style="height:45px;width:130px" onclick="login()" type="button">Login</button>
+                        <p>No account? <a href="register.html">Register</a></p>
                 </form>
             </div>
         </div>
     </div>
 
     <script src="js/scripts.js" type="text/javascript"></script>
+    <script>
+        function login() {
+            window.location.replace("home.html");
+    }
+    </script>
 </body>
 
 </html>
