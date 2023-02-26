@@ -15,7 +15,7 @@
     <meta name="description" content="An app that helps you choosing a serie">
     <link rel="stylesheet" href="css/templates/layout.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
-    <link rel="stylesheet" href="css/register.css" type="text/css">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
     <link rel="manifest" href="manifest.json">
 </head>
 
@@ -25,7 +25,7 @@
             <div class="col-md-12 vertical-center">
                 <form>
                     <img class="img-fluid" src="images/logo.png" alt="logo">
-                    <h1 style="padding-bottom: 35px; font-size:xx-large;">Register</h1>
+                    <h1 style="padding-bottom: 35px; font-size:xx-large;">Login</h1>
                     <div class="form-group">
                         <label for="InputEmail">Email address</label>
                         <input type="email" class="form-control" id="InputEmail" placeholder="Enter email">
@@ -34,12 +34,8 @@
                         <label for="InputPassword">Password</label>
                         <input type="password" class="form-control" id="InputPassword" placeholder="Password">
                     </div>
-                    <div class="form-group">
-                        <label for="InputPassword2">Confirm password</label>
-                        <input type="password" class="form-control" id="InputPassword2" placeholder="Confirm password">
-                    </div>
-                    <button style="height:45px;width:130px" onclick="register()" type="button">Sign up</button>
-                        <p>Already have an account? <a href="login.html">Login</a></p>
+                    <button style="height:45px;width:130px" onclick="login()" type="button">Login</button>
+                        <p>No account? <a href="register.html">Register</a></p>
                 </form>
             </div>
         </div>
@@ -47,7 +43,7 @@
 
     <script src="js/scripts.js" type="text/javascript"></script>
     <script>
-        function register() {
+        function login() {
             window.location.replace("home.html");
     }
     </script>

@@ -1,0 +1,39 @@
+.vertical-center {
+  min-height: 100vh; 
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img{
+  max-height: 100px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+button{
+  margin: 15px;
+  background-color: #0d0d62;
+}
+
+a{
+  color: rgb(227, 227, 227);
+}
+
+a:hover{
+  color: rgb(198, 198, 198);
+}
+
+form{
+  padding: 30px;
+  background-color: #4d47e9;
+  border-radius: 25px;
+  min-width: 318px;
+}
+
+@media screen and (min-width: 992px) { 
+  form{
+    min-width: 500px;
+  }
+}
