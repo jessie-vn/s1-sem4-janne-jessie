@@ -1,0 +1,32 @@
+.category {
+    margin: 15px;
+    padding: 25px;
+    background-color: #3a3a71;
+    border-radius: 25px;
+}
+.category h1 {
+    font-weight: bold;
+    font-size: 15px;
+}
+.category .watching-hours, .btn-box {
+    margin-top: 45px;
+}
+.category .watching-days .days-box {
+    display: inline-flex;
+}
+.category .watching-days .days-box .day {
+    width: 15%;
+    margin: 5px 5px 0 5px;
+}
+.category .watching-days .days-box .day:hover {
+    border-bottom: 2px solid white;
+}
+.category .watching-days .days-box .day p {
+    margin: 0;
+}
+.category .watching-days .days-box .selected {
+    border-bottom: 2px solid white;
+}
+.category .watching-hours .slider-box input {
+    text-align: center;
+}
