@@ -36,7 +36,7 @@
             <h1>Let's get started!</h1>
           </div>
           <div class="btn-box">
-            <button type="button">Start <i class="fa-solid fa-arrow-right"></i></button>
+            <button onclick="navigateToLogin()" type="button">Start <i class="fa-solid fa-arrow-right"></i></button>
           </div>
           <div class="character">
             <div class="image-box">
@@ -49,6 +49,11 @@
   </div>
 
   <script src="js/scripts.js" type="text/javascript"></script>
+  <script>
+    function navigateToLogin() {
+      window.location.replace("login.html");
+    }
+  </script>
 </body>
 
 </html>
