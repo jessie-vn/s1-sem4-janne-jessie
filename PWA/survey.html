@@ -86,9 +86,10 @@
         let i = 1;
         function nextQuestion() {
             for (let idx = i; idx <= questions.length;) {
-                if (idx === questions.length) {
+                if (i === questions.length) {
                     document.getElementById('movies').style.display = 'block';
                     document.getElementById('questions').style.display = 'none';
+                    document.getElementById('question-input').value = "";
                     break;
                 }
                 if (document.getElementById('question-input').value !== "") {
@@ -96,6 +97,7 @@
                     document.getElementById('question-input').type = questions[idx].inputType;
                     idx++
                     i = idx
+                    document.getElementById('question-input').value = "";
                     break;
                 }
                 else { 

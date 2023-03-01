@@ -4,6 +4,10 @@
 .questions, .movies {
     display: none;
 }
+.questions .input-box input {
+    text-align: center;
+    margin-top: 10px;
+}
 .movies .movies-box {
     width: 100%;
     overflow-x: scroll;
