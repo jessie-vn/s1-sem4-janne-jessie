@@ -2,17 +2,20 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/ecef4a84e2.js" crossorigin="anonymous"></script>
-  <title>Binge Buddy</title>
-  <meta name="author" content="Jessie and Janne">
-  <meta name="description" content="An app that helps you choosing a serie">
-  <link rel="stylesheet" href="css/templates/layout.css" type="text/css">
-  <link rel="stylesheet" href="css/survey.css" type="text/css">
-  <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ecef4a84e2.js" crossorigin="anonymous"></script>
+    <title>Binge Buddy</title>
+    <meta name="author" content="Jessie and Janne">
+    <meta name="description" content="An app that helps you choosing a serie">
+    <link rel="stylesheet" href="css/templates/layout.css" type="text/css">
+    <link rel="stylesheet" href="css/survey.css" type="text/css">
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -30,87 +33,131 @@
                 </div>
             </div>
         </div>
-        <div class="row row-middle-center justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <div id="category" class="category">
                     <div class="title-box">
-                        <h1>We must ask you a couple questions to gather a nice couple movies for you</h1>
-                    </div>
-                    <div class="button-box">
-                        <button onclick="startSurvey()" type="button">Start survey <i class="fa-solid fa-arrow-right"></i></button>
+                        <h1>To give you recommendations please pick what fits your current mood best!</h1>
                     </div>
                 </div>
                 <div id="questions" class="questions">
-                    <div class="input-box">
-                        <label id="question-asked">What genre do you feel like watching?</label>
-                        <input id="question-input" type="text">
-                    </div>
+                    <div id="image-gallery"></div>
                     <div class="button-box">
-                        <button onclick="nextQuestion()" type="button">Next question <i class="fa-solid fa-arrow-right"></i></button>
+                        <button onclick="confirmAnswers()" type="button">Results <i
+                                class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
                 <div id="movies" class="movies">
-                    <h1>Thank you for entering the survey. We found these movies:</h1>
+                    <h1>Thank you for entering the survey. We found these series:</h1>
                     <div class="movies-box">
-                        <a href="serie.html"><div class="movie">Serie 1</div></a>
-                        <a href="serie.html"><div class="movie">Serie 2</div></a>
-                        <a href="serie.html"><div class="movie">Serie 3</div></a>
-                        <a href="serie.html"><div class="movie">Serie 4</div></a>
-                        <a href="serie.html"><div class="movie">Serie 5</div></a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 1</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 2</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 3</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 4</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 5</div>
+                        </a>
                     </div>
                     <div class="button-box">
-                        <button onclick="redoSurvey()" type="button">Redo survey <i class="fa-solid fa-arrow-right"></i></button>
+                        <button onclick="redoSurvey()" type="button">Redo survey <i
+                                class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row return-home">
             <div class="button-box">
-                <button onclick="navigateToHome()" type="button"><i class="fa-solid fa-arrow-left"></i> Return to home</button>
+                <button onclick="navigateToHome()" type="button"><i class="fa-solid fa-arrow-left"></i></button>
             </div>
         </div>
     </div>
 
     <script src="js/scripts.js" type="text/javascript"></script>
     <script>
-        function startSurvey() {
-           document.getElementById('category').style.display = 'none';
-           document.getElementById('questions').style.display = 'block';
-        }
-        let questions = [ 
-                { question: "What genre do you feel like watching?", inputType: "text" },
-                { question: "How much seasons should it be?", inputType: "number" },
-                { question: "How much episodes should it be?", inputType: "number" },
-                { question: "Any actors that should be included?", inputType: "text" }
-            ];
-        let i = 1;
-        function nextQuestion() {
-            for (let idx = i; idx <= questions.length;) {
-                if (i === questions.length) {
-                    document.getElementById('movies').style.display = 'block';
-                    document.getElementById('questions').style.display = 'none';
-                    document.getElementById('question-input').value = "";
-                    break;
-                }
-                if (document.getElementById('question-input').value !== "") {
-                    document.getElementById('question-asked').innerHTML = questions[idx].question;
-                    document.getElementById('question-input').type = questions[idx].inputType;
-                    idx++
-                    i = idx
-                    document.getElementById('question-input').value = "";
-                    break;
-                }
-                else { 
-                    alert("Empty answers are not allowed."); 
-                    break;
-                }
+        const categories = [
+            {
+                radioName: "mood", pictures: [
+                    { src: 'images/survey/mood/smile-emoji.svg', alt: 'Content emoji', radioValue: 'content' },
+                    { src: 'images/survey/mood/laugh-emoji.svg', alt: 'Laughing emoji', radioValue: 'laugh' },
+                    { src: 'images/survey/mood/tired-emoji.svg', alt: 'Tired emoji', radioValue: 'tired' },
+                    { src: 'images/survey/mood/sad-emoji.svg', alt: 'Sad emoji', radioValue: 'sad' },
+                    { src: 'images/survey/mood/in-love-emoji.svg', alt: 'Love emoji', radioValue: 'love' },
+                    { src: 'images/survey/mood/angry-emoji.svg', alt: 'Angry emoji', radioValue: 'angry' }
+                ]
+            },
+            {
+                radioName: "animals", pictures: [
+                    { src: 'images/survey/animals/animal-dog.svg', alt: 'Dog', radioValue: 'dog' },
+                    { src: 'images/survey/animals/animal-bunny.svg', alt: 'Bunny', radioValue: 'bunny' },
+                    { src: 'images/survey/animals/animal-pig.svg', alt: 'Pig', radioValue: 'pig' },
+                    { src: 'images/survey/animals/animal-panda.svg', alt: 'Panda', radioValue: 'panda' },
+                    { src: 'images/survey/animals/animal-fox.svg', alt: 'Fox', radioValue: 'fox' },
+                    { src: 'images/survey/animals/animal-bee.svg', alt: 'Bee', radioValue: 'bee' }
+                ]
+            },
+            {
+                radioName: "landscape", pictures: [
+                    { src: 'images/survey/landscape/village.svg', alt: 'Village', radioValue: 'village' },
+                    { src: 'images/survey/landscape/forest.svg', alt: 'Forest', radioValue: 'forest' },
+                    { src: 'images/survey/landscape/beach.svg', alt: 'Palm beach', radioValue: 'beach' },
+                    { src: 'images/survey/landscape/river.svg', alt: 'River', radioValue: 'river' },
+                    { src: 'images/survey/landscape/waterfall.svg', alt: 'Waterfall', radioValue: 'waterfall' },
+                    { src: 'images/survey/landscape/bridge.svg', alt: 'Bridge at night', radioValue: 'bridge' },
+                    { src: 'images/survey/landscape/sea.svg', alt: 'Sea at sunset', radioValue: 'sea' },
+                    { src: 'images/survey/landscape/snow.svg', alt: 'Snow', radioValue: 'snow' },
+                    { src: 'images/survey/landscape/desert.svg', alt: 'Desert road', radioValue: 'desert' }
+                ]
+            },
+            {
+                radioName: "colors", pictures: [
+                    { src: 'images/survey/colors/red.svg', alt: 'Red paint', radioValue: 'red' }
+                ]
             }
+        ]
+
+        categories.forEach(category => {
+            const gallery = document.getElementById('image-gallery');
+
+            const div = document.createElement('div');
+            div.classList.add('input-box-' + category.radioName);
+            gallery.appendChild(div);
+
+            category.pictures.forEach(picture => {
+                const label = document.createElement('label');
+                div.appendChild(label);
+
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = category.radioName;
+                input.value = picture.radioValue;
+                label.appendChild(input);
+
+                const img = document.createElement('img');
+                img.src = picture.src;
+                img.alt = picture.alt;
+                label.appendChild(img);
+            }
+            );
+        })
+
+        function confirmAnswers() {
+            document.getElementById('movies').style.display = 'block';
+            document.getElementById('questions').style.display = 'none';
+            document.getElementById('question-input').value = "";
+            document.getElementById('category').style.display = 'none';
         }
         function redoSurvey() {
             document.getElementById('questions').style.display = 'block';
             document.getElementById('movies').style.display = 'none';
-            document.getElementById('question-asked').innerHTML = questions[0].question;
-            i = 1;
+            document.getElementById('category').style.display = 'block';
         }
 
         function navigateToHome() { window.location.replace("home.html"); }
