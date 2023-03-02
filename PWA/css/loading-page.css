@@ -1,0 +1,25 @@
+.loading-box {
+    margin-top: 25px;
+}
+#results-loaded {
+    margin-top: 15px;
+    font-size: 15px;
+    display: none;
+}
+.image-box {
+    margin-top: 15%;
+}
+.results #finished-loading-btn {
+    display: none;
+}
+
+/* responsive */
+@media screen and (min-width: 768px) { 
+    .image-box, .btn-box {
+        margin-top: 25px;
+    }
+    .loading-box {
+        margin: 0;
+        margin-top: 10%;
+    }
+}
