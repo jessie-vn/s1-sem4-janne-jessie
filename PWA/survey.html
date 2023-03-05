@@ -22,24 +22,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12 top-bar">
-                <div class="text-box">
-                    <h1>You are logged in as:</h1>
-                    <p class="bold">Janne van Seggelen</p>
-                </div>
-                <div class="image-box">
-                    <a href="account.html">
-                        <img class="img-fluid" src="images/profiles/profile-picture.png" alt="Profile Picture">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
                 <div id="category" class="category">
                     <div class="title-box">
                         <h1>To give you recommendations please pick what fits your current mood best!</h1>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <div id="questions" class="questions">
                     <div id="image-gallery"></div>
                     <div class="button-box">
@@ -75,7 +66,7 @@
         </div>
         <div class="row return-home">
             <div class="button-box">
-                <button onclick="navigateToHome()" type="button"><i class="fa-solid fa-arrow-left"></i></button>
+                <button onclick="navigateToHome()" type="button"><i class="fa-solid fa-house"></i></button>
             </div>
         </div>
     </div>
@@ -160,7 +151,6 @@
         function confirmAnswers() {
             document.getElementById('movies').style.display = 'block';
             document.getElementById('questions').style.display = 'none';
-            document.getElementById('question-input').value = "";
             document.getElementById('category').style.display = 'none';
         }
         function redoSurvey() {
