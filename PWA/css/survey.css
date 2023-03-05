@@ -21,6 +21,7 @@
 #image-gallery > div{
     width: 100%;
     overflow: scroll;
+    overflow-y: hidden;
     white-space: nowrap;
     display: inline-block;
     background-color: #3D3D81;
