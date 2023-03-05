@@ -1,11 +1,12 @@
 .row-middle-center {
     margin-top: 50%;
 }
+
 .movies {
     display: none;
 }
 
-.questions{
+.questions {
     display: block;
 }
 
@@ -14,11 +15,11 @@
     margin-top: 10px;
 }
 
-#image-gallery{
+#image-gallery {
     margin-top: 25px;
 }
 
-#image-gallery > div{
+#image-gallery>div {
     width: 100%;
     overflow: scroll;
     overflow-y: hidden;
@@ -29,15 +30,39 @@
     padding: 5px
 }
 
+#slider {
+    width: 100%;
+    background-color: #3D3D81;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+#slider>label {
+    margin-bottom: 0px;
+}
+
+#slider>input {
+    border-bottom: none;
+    margin-bottom: 5px;
+}
+
+.range-cust::-webkit-slider-thumb {
+    background: #4d47e9;
+    border: 1px solid white;
+}
+
 .movies .movies-box {
     width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 }
+
 .movies .movies-box .movie:hover {
     box-shadow: 10px 5px 5px black;
 }
+
 .movies .movies-box .movie {
     display: inline-block;
     margin: 10px;
@@ -46,6 +71,7 @@
     height: 150px;
     color: #0d0d62;
 }
+
 .return-home {
     position: absolute;
     margin: 15px;
@@ -53,43 +79,44 @@
     left: 0;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 /* responsive */
-@media screen and (min-width: 992px) { 
+@media screen and (min-width: 992px) {
     .row-middle-center {
         margin-top: 15%;
     }
 }
-@media screen and (max-width: 992px) { 
+
+@media screen and (max-width: 992px) {
     .row-middle-center {
         margin-top: 30%;
     }
 }
 
 /* HIDE RADIO */
-[type=radio] { 
+[type=radio] {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* IMAGE STYLES */
-  [type=radio] + img {
+}
+
+/* IMAGE STYLES */
+[type=radio]+img {
     cursor: pointer;
-  }
-  
-  /* CHECKED STYLES */
-  [type=radio]:checked + img {
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked+img {
     outline: 2px solid white;
     border-radius: 2rem;
-  }
+}
 
-  img{
+img {
     margin: 10px;
     max-height: 61px;
     padding: 2px;
-  }
+}
