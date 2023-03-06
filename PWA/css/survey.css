@@ -51,7 +51,9 @@
     background: #4d47e9;
     border: 1px solid white;
 }
-
+.movies {
+    margin-top: 20%;
+}
 .movies .movies-box {
     width: 100%;
     overflow-x: scroll;
@@ -78,7 +80,11 @@
     bottom: 0;
     left: 0;
 }
-
+.return-home .button-box button {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+}
 a {
     text-decoration: none;
 }
