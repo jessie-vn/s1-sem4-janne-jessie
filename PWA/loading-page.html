@@ -18,24 +18,55 @@
 <body>
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <div id="movies" class="movies">
+                    <h1>Thank you for entering the survey. We found these series:</h1>
+                    <div class="movies-box">
+                        <a href="serie.html">
+                            <div class="movie">Serie 1</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 2</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 3</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 4</div>
+                        </a>
+                        <a href="serie.html">
+                            <div class="movie">Serie 5</div>
+                        </a>
+                    </div>
+                    <div class="button-box">
+                        <button onclick="redoSurvey()" type="button">Redo survey <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div id="return-home" class="row return-home">
+                <div class="button-box">
+                    <button onclick="navigateToHome()" type="button"><i class="fa-solid fa-house"></i></button>
+                </div>
+            </div>
             <div class="col-md-6 loading-box">
-                <div class="text-box">
+                <div id="text-box" class="text-box">
                     <h1>Getting some nice series for you ...</h1>
                     <div class="progress">
                         <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #4d47e9; width: 0"></div>
                     </div>
                 </div>
-                <div class="results">
+                <div id="results" class="results">
                     <div id="loading-btn" class="btn-box">
                         <button type="button"><i class="fas fa-circle-notch fa-spin"></i></button>
                     </div>
                     <div id="finished-loading-btn" class="btn-box">
-                        <button type="button">Show results <i class="fa-solid fa-arrow-right"></i></button>
+                        <button onclick="showResults()" type="button">Show results <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="image-box">
+                <div id="image-box" class="image-box">
                     <img class="img-fluid" src="images/loading-images/halloween-cat.jpg" alt="Loading screen ...">
                 </div>
                 <p id="results-loaded">Results loaded <i class="fa-solid fa-cat"></i></p>
@@ -63,5 +94,19 @@
             document.getElementById('results-loaded').style.display = 'block';
         };
         finishLoading();
+
+        function redoSurvey() {
+            window.location.replace("survey.html");
+        }
+
+        function showResults() {
+            document.getElementById('movies').style.display = 'block';
+            document.getElementById('text-box').style.display = 'none';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('image-box').style.display = 'none';
+            document.getElementById('results-loaded').style.display = 'none';
+            document.getElementById('return-home').style.display = 'block';
+        }
+        function navigateToHome() { window.location.replace("home.html"); }
     </script>
 </body>

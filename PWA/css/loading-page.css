@@ -12,6 +12,43 @@
 .results #finished-loading-btn {
     display: none;
 }
+#movies { display: none; }
+.movies {
+    margin-top: 15%;
+}
+.movies .movies-box {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.movies .movies-box a {
+    text-decoration: none;
+}
+.movies .movies-box .movie:hover {
+    box-shadow: 10px 5px 5px black;
+}
+
+.movies .movies-box .movie {
+    display: inline-block;
+    margin: 10px;
+    background-color: white;
+    width: 125px;
+    height: 150px;
+    color: #0d0d62;
+}
+.return-home {
+    display: none;
+    position: absolute;
+    margin: 15px;
+    bottom: 0;
+    left: 0;
+}
+.return-home .button-box button {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+}
 
 /* responsive */
 @media screen and (min-width: 768px) { 
