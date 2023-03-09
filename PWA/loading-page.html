@@ -75,6 +75,7 @@
         </div>
     </div>
     <script src="js/scripts.js" type="text/javascript"></script>
+    <scrip src="js/vibrate.js"  type="text/javascript"></scrip>
     <script>
         const delay = ms => new Promise(res => setTimeout(res, ms));
         const finishLoading = async () => {
@@ -94,7 +95,8 @@
             document.getElementById('finished-loading-btn').style.display = 'block';
             document.getElementById('results-loaded').style.display = 'block';
 
-            navigator.vibrate(500);
+            testVibrate();
+
         };
         finishLoading();
 
