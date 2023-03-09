@@ -1,7 +1,7 @@
 {
-    "theme_color": "#faa639",
+    "theme_color": "#0d0d62",
     "background_color": "#fff",
-    "display": "browser",
+    "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
     "name": "Binge Buddy",
@@ -9,22 +9,22 @@
     "description": "An app that helps you choosing a serie",
     "icons": [
         {
-            "src": "../icon-192x192.png",
+            "src": "manifest/icon-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "../icon-256x256.png",
+            "src": "manifest/icon-256x256.png",
             "sizes": "256x256",
             "type": "image/png"
         },
         {
-            "src": "../icon-384x384.png",
+            "src": "manifest/icon-384x384.png",
             "sizes": "384x384",
             "type": "image/png"
         },
         {
-            "src": "../icon-512x512.png",
+            "src": "manifest/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
