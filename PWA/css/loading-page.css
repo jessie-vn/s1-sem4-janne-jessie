@@ -14,7 +14,7 @@
 }
 #movies { display: none; }
 .movies {
-    margin-top: 15%;
+    margin-top: 50%;
 }
 .movies .movies-box {
     width: 100%;
@@ -59,4 +59,5 @@
         margin: 0;
         margin-top: 10%;
     }
+    .movies { margin-top: 15%;}
 }
