@@ -19,11 +19,15 @@
 }
 .continue-watch .movies .movie, .something-new .movies .movie {
     display: inline-block;
-    margin: 10px;
-    background-color: white;
-    width: 125px;
-    height: 150px;
+    margin: 5px;
     color: #0d0d62;
+}
+.continue-watch .movies .movie img, .something-new .movies .movie img { 
+    border: 1px solid white;
+    height: 200px;
+}
+.continue-watch .movies .movie p, .something-new .movies .movie p { 
+    margin-bottom: 5px;
 }
 ::-webkit-scrollbar-track {
     background: red; 

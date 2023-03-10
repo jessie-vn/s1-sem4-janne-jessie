@@ -12,31 +12,32 @@
 .results #finished-loading-btn {
     display: none;
 }
-#movies { display: none; }
-.movies {
+.list-movies { 
+    display: none;
     margin-top: 50%;
+    text-align: center;
 }
-.movies .movies-box {
+.list-movies .movies {
     width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 }
-.movies .movies-box a {
-    text-decoration: none;
-}
-.movies .movies-box .movie:hover {
+.list-movies .movies .movie:hover, 
+.list-movies .movies .movie:hover {
     box-shadow: 10px 5px 5px black;
 }
-
-.movies .movies-box .movie {
+.list-movies .movies .movie {
     display: inline-block;
-    margin: 10px;
-    background-color: white;
-    width: 125px;
-    height: 150px;
+    margin: 5px;
     color: #0d0d62;
 }
+.list-movies .movies .movie img { 
+    border: 1px solid white;
+    height: 200px;
+}
+
+#redo-survey { display: none; }
 .return-home {
     display: none;
     position: absolute;
@@ -59,5 +60,5 @@
         margin: 0;
         margin-top: 10%;
     }
-    .movies { margin-top: 15%;}
+    .list-movies { margin-top: 15%;}
 }
