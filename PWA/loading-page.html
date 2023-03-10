@@ -20,7 +20,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div id="movies" class="movies">
+                <div class="list-movies" id="list-movies">
+                    <h1>Thank you for entering the survey. We found these series:</h1>
+                    <div class="button-box">
+                        <button id="redo-survey" onclick="redoSurvey()" type="button">Redo survey <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <!--<div id="movies" class="movies">
                     <h1>Thank you for entering the survey. We found these series:</h1>
                     <div class="movies-box">
                         <a href="serie.html">
@@ -43,7 +49,7 @@
                         <button onclick="redoSurvey()" type="button">Redo survey <i
                                 class="fa-solid fa-arrow-right"></i></button>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div id="return-home" class="row return-home">
                 <div class="button-box">
@@ -75,6 +81,7 @@
         </div>
     </div>
     <script src="js/scripts.js" type="text/javascript"></script>
+    <script src="js/movies.js" type="text/javascript"></script>
     <script>
         const delay = ms => new Promise(res => setTimeout(res, ms));
         const finishLoading = async () => {
@@ -101,7 +108,8 @@
         }
 
         function showResults() {
-            document.getElementById('movies').style.display = 'block';
+            document.getElementById('list-movies').style.display = 'block';
+            document.getElementById('redo-survey').style.display = 'inline-block';
             document.getElementById('text-box').style.display = 'none';
             document.getElementById('results').style.display = 'none';
             document.getElementById('image-box').style.display = 'none';
