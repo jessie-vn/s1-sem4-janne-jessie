@@ -39,13 +39,13 @@
                     <div class="watching-days">
                         <h1>Your favorite watching times:</h1>
                         <div class="days-box">
-                            <div class="day selected"><p>Mo</p></div>
-                            <div class="day"><p>Tu</p></div>
-                            <div class="day"><p>We</p></div>
-                            <div class="day selected"><p>Th</p></div>
-                            <div class="day"><p>Fr</p></div>
-                            <div class="day selected"><p>Sa</p></div>
-                            <div class="day selected"><p>So</p></div>
+                            <div onclick="toggleWatchDays('monday')" id="monday" class="day"><p>Mo</p></div>
+                            <div onclick="toggleWatchDays('tuesday')" id="tuesday" class="day"><p>Tu</p></div>
+                            <div onclick="toggleWatchDays('wednesday')" id="wednesday" class="day"><p>We</p></div>
+                            <div onclick="toggleWatchDays('thursday')" id="thursday" class="day"><p>Th</p></div>
+                            <div onclick="toggleWatchDays('friday')" id="friday" class="day"><p>Fr</p></div>
+                            <div onclick="toggleWatchDays('saturday')" id="saturday" class="day"><p>Sa</p></div>
+                            <div onclick="toggleWatchDays('sunday')" id="sunday" class="day"><p>So</p></div>
                         </div>
                     </div>
                     <div class="watching-hours">
@@ -55,15 +55,12 @@
                             <div id="slider-range"></div>
                         </div>
                     </div>
-                    <div class="btn-box">
-                        <button onclick="" type="button">Change watching times</button>
-                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="category">
                     <div class="genres">
-                        <h1>Your favorite genres:</h1>
+                        <h1>Your top genres:</h1>
                         <div class="list-box">
                             <ol>
                                 <li>Horror</li>
@@ -72,14 +69,48 @@
                             </ol>
                         </div>
                     </div>
-                    <div class="btn-box">
-                        <button onclick="" type="button">Change genres</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="category">
+                    <div class="information">
+                        <h1>Your information:</h1>
+                        <div class="input-box">
+                            <label>Your name</label>
+                            <input type="text" placeholder="Your name" value="Janne van Seggelen">
+                        </div>
+                        <div class="input-box">
+                            <label>Your age</label>
+                            <input type="number" placeholder="Your age" value="18">
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button onclick="removeAccount()" class="remove"><i class="fa-solid fa-xmark"></i> Remove app</button>
+                <button onclick="addAccount()" class="add"><i class="fa-solid fa-plus"></i> Make account</button>
             </div>
         </div>
     </div>
 
     <script src="js/scripts.js" type="text/javascript"></script>
     <script src="js/range-slider.js" type="text/javascript"></script>
+    <script>
+        function toggleWatchDays(day) {
+            if (document.getElementById(day).style.borderBottom == '') {
+                document.getElementById(day).style.borderBottom = '2px solid white';
+            }
+            else { document.getElementById(day).style.borderBottom = 'none'; }
+        }
+        function removeAccount() {
+            if (confirm("Do you want to delete the app? All data collected will be lost unless you make an account.")) {
+                // delete app
+            }
+        }
+        function addAccount() {
+            window.location.replace('register.html');
+        }
+    </script>
 </body>
