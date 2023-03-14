@@ -24,7 +24,7 @@
             <div class="col-12 top-bar">
                 <div id="category" class="category">
                     <div class="title-box">
-                        <h1>To give you recommendations please pick what fits your current mood best!</h1>
+                        <h1>Please pick what fits your current mood best!</h1>
                     </div>
                 </div>
             </div>
@@ -78,6 +78,22 @@
     <script src="js/scripts.js" type="text/javascript"></script>
     <script>
         const categories = [
+            {
+                radioName: "archetypes", pictures: [
+                    { src: 'images/survey/archetypes/balloon.svg', alt: 'Balloon', radioValue: 'innocent' },
+                    { src: 'images/survey/archetypes/map.svg', alt: 'Map', radioValue: 'explorer' },
+                    { src: 'images/survey/archetypes/books.svg', alt: 'Stack of books', radioValue: 'sage' }, 
+                    { src: 'images/survey/archetypes/shield.svg', alt: 'Shield', radioValue: 'hero' },
+                    { src: 'images/survey/archetypes/gun.svg', alt: 'Gun', radioValue: 'outlaw' },
+                    { src: 'images/survey/archetypes/wizard-hat.svg', alt: 'Wizard hat', radioValue: 'magician' },
+                    { src: 'images/survey/archetypes/cap.svg', alt: 'Shirt', radioValue: 'regular guy' },
+                    { src: 'images/survey/archetypes/rose.svg', alt: 'Rose', radioValue: 'lover' },
+                    { src: 'images/survey/archetypes/jester.svg', alt: 'Jester hat', radioValue: 'jester' },
+                    { src: 'images/survey/archetypes/nurse.svg', alt: 'Nurse hat', radioValue: 'caregiver' },
+                    { src: 'images/survey/archetypes/palette.svg', alt: 'Paint palette', radioValue: 'creator' },
+                    { src: 'images/survey/archetypes/crown.svg', alt: 'Crown', radioValue: 'ruler' }
+                ]
+            },
             {
                 radioName: "mood", pictures: [
                     { src: 'images/survey/mood/smile-emoji.svg', alt: 'Content emoji', radioValue: 'content' },
