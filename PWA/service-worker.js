@@ -1,3 +1,6 @@
+//To make sure the service worker works when developing, the scope and start_url of the manifest should be set to '/PWA/'. 
+//However, when the website is on the server both should be changed to '/'.
+
 self.addEventListener("install",(installing)=>{
     console.log("Service Worker: I am being installed, hello world!");
   });
