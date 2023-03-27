@@ -36,6 +36,6 @@ class MainActivity : AppCompatActivity() {
     }
     fun continueSurvey(view: View) {
         // Continue the survey
-        Toast.makeText(getBaseContext(), "This is a toast", Toast.LENGTH_SHORT ).show();
+        Toast.makeText(getBaseContext(), "Your resume has been updated", Toast.LENGTH_SHORT ).show();
     }
 }
