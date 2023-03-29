@@ -1,6 +1,7 @@
 package nl.jobr
 
 import android.os.Bundle
+import android.text.Editable
 import android.text.InputType
 import android.util.Log
 import android.view.View
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-    private var idx: Int = 1;
+    private var idx: Int = 0;
     private data class Question(val question1: String, val type1: Int, var answer1: String?, val question2: String, val type2: Int, var answer2: String?)
     private val questions = arrayOf(
         Question("What is your name?", InputType.TYPE_CLASS_TEXT, null,"What is your age?", InputType.TYPE_CLASS_NUMBER, null),
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             updateQuestions(idx)
             break
         }
-        idx++
+        //idx++
 
         // Check if last question is already displayed
         if (idx > questions.size) {
@@ -67,19 +68,29 @@ class MainActivity : AppCompatActivity() {
         val question2: TextView = findViewById(R.id.tvAge)
         val type2: EditText = findViewById(R.id.nbAge)
 
+        if (type2.text != null) { questions[i].answer2 = type2.text.toString() }
+        if (type1.text.trim().isNotEmpty())
+        { questions[i].answer1 = type1.text.toString() }
+
+        idx++
+        if (idx >= questions.size) { idx = 0 }
+        Log.d(idx.toString(), "IDX")
+        Log.d(questions[idx].answer1, "Answer1")
+
+        question1.text = questions[idx].question1
+        type1.inputType = questions[idx].type1
+
+        question2.text = questions[idx].question2
+        type2.inputType = questions[idx].type2
+
         // Clean Edit View
         type1.text = null
+        type1.hint = null
         type2.text = null
+        type2.hint = null
 
-        if (questions[i].answer1 != null) { type1.hint = questions[i].answer1 }
-        if (questions[i].answer2 != null) { type2.hint = questions[i].answer2 }
-
-        question1.text = questions[i].question1
-        type1.inputType = questions[i].type1
-        questions[i].answer1 = type1.text.toString()
-
-        question2.text = questions[i].question2
-        type2.inputType = questions[i].type2
-        questions[i].answer2 = type2.text.toString()
+        if (questions[idx].answer1 != null)
+        { type1.hint = questions[idx].answer1 }
+        if (questions[idx].answer2 != null) { type2.hint = questions[idx].answer2 }
     }
 }
