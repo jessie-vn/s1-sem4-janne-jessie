@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    /* Survey btn Resume page */
     private var idx: Int = 0;
     private data class Question(val question1: String, val type1: Int, var answer1: String?, val question2: String, val type2: Int, var answer2: String?)
     private val questions = arrayOf(
@@ -90,5 +92,37 @@ class MainActivity : AppCompatActivity() {
         if (questions[idx].answer1 != null)
         { type1.hint = questions[idx].answer1 }
         if (questions[idx].answer2 != null) { type2.hint = questions[idx].answer2 }
+    }
+
+    /* Save button Account page */
+    private data class Person(var name: String, var email: String?, var phoneNumber: String?, var occupation: String?)
+    private val person: Person = Person("Casey Web", null, null, null)
+    fun saveInformation(view: View) {
+        val name: EditText = findViewById(R.id.etName)
+        val email: EditText = findViewById(R.id.etEmail)
+        val phoneNumber: EditText = findViewById(R.id.etPhoneNumber)
+        val occupation: EditText = findViewById(R.id.etOccupation)
+
+        if (person != null) {
+            if (name.text.trim().isNotEmpty()) { person.name = name.toString() }
+            if (email.text.trim().isNotEmpty()) { person.email = email.toString() }
+            if (phoneNumber.text.trim().isNotEmpty()) { person.phoneNumber = phoneNumber.toString() }
+            if (occupation.text.trim().isNotEmpty()) { person.occupation = occupation.toString() }
+            updateAccountBoxes()
+            Toast.makeText(getBaseContext(), "Your information has been updated", Toast.LENGTH_SHORT ).show();
+        }
+    }
+    private fun updateAccountBoxes() {
+        val name: EditText = findViewById(R.id.etName)
+        val email: EditText = findViewById(R.id.etEmail)
+        val phoneNumber: EditText = findViewById(R.id.etPhoneNumber)
+        val occupation: EditText = findViewById(R.id.etOccupation)
+
+        if (person != null) {
+            if (person.name != null) { name.hint = person.name }
+            if (person.email != null) { email.hint = person.email }
+            if (person.phoneNumber != null) { phoneNumber.hint = person.phoneNumber }
+            if (person.occupation != null) { occupation.hint = person.occupation }
+        }
     }
 }
