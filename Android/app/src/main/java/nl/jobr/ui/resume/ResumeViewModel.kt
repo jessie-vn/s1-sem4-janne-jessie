@@ -1,13 +1,13 @@
-package nl.jobr.ui.home
+package nl.jobr.ui.resume
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class ResumeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is resume Fragment"
     }
     val text: LiveData<String> = _text
 }
