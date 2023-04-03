@@ -104,10 +104,10 @@ class MainActivity : AppCompatActivity() {
         val occupation: EditText = findViewById(R.id.etOccupation)
 
         if (person != null) {
-            if (name.text.trim().isNotEmpty()) { person.name = name.toString() }
-            if (email.text.trim().isNotEmpty()) { person.email = email.toString() }
-            if (phoneNumber.text.trim().isNotEmpty()) { person.phoneNumber = phoneNumber.toString() }
-            if (occupation.text.trim().isNotEmpty()) { person.occupation = occupation.toString() }
+            if (name.text.trim().isNotEmpty()) { person.name = name.text.toString() }
+            if (email.text.trim().isNotEmpty()) { person.email = email.text.toString() }
+            if (phoneNumber.text.trim().isNotEmpty()) { person.phoneNumber = phoneNumber.text.toString() }
+            if (occupation.text.trim().isNotEmpty()) { person.occupation = occupation.text.toString() }
             updateAccountBoxes()
             Toast.makeText(getBaseContext(), "Your information has been updated", Toast.LENGTH_SHORT ).show();
         }
@@ -124,5 +124,11 @@ class MainActivity : AppCompatActivity() {
             if (person.phoneNumber != null) { phoneNumber.hint = person.phoneNumber }
             if (person.occupation != null) { occupation.hint = person.occupation }
         }
+
+        // Clean up boxes
+        name.text = null
+        email.text = null
+        phoneNumber.text = null
+        occupation.text = null
     }
 }
