@@ -5,38 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.account.AccountFragment">
-
-    <EditText
-        android:id="@+id/etPhoneNumber"
-        android:layout_width="363dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="29dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Your phonenumber ..."
-        android:textColor="#FF5800"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
-
-    <EditText
-        android:id="@+id/etOccupation"
-        android:layout_width="363dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="29dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Your occupation  ..."
-        android:inputType="text"
-        android:textColor="#FF5800"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
-
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="92dp"
@@ -89,36 +57,84 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNameWelcome" />
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="363dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="29dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Your email ..."
-        android:inputType="textEmailAddress"
-        android:textColor="#FF5800"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
-
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="363dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="29dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Your name ..."
-        android:inputType="textPersonName"
-        android:textColor="#FF5800"
-        android:textSize="16sp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvChangeInformation" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="363dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="29dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Your email ..."
+                android:inputType="textEmailAddress"
+                android:textColor="#FF5800"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="363dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="29dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Your name ..."
+                android:inputType="textPersonName"
+                android:textColor="#FF5800"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvChangeInformation" />
+
+            <EditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="363dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="29dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Your phonenumber ..."
+                android:textColor="#FF5800"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+            <EditText
+                android:id="@+id/etOccupation"
+                android:layout_width="363dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="29dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Your occupation  ..."
+                android:inputType="text"
+                android:textColor="#FF5800"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btnSave"
