@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "420850725853",
+    "project_id": "jobr-5ce3a",
+    "storage_bucket": "jobr-5ce3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420850725853:android:6974ef05b48a4497e8bc34",
+        "android_client_info": {
+          "package_name": "nl.jobr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420850725853-rfc04i3jahukd9rkht4idlb18clp0qae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlEYL419sxH3hS_Za7VoJy17wCeL8u4e4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420850725853-rfc04i3jahukd9rkht4idlb18clp0qae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
