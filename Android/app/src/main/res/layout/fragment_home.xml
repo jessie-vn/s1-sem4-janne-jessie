@@ -6,43 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/textHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="textHome" />
+        <com.yuyakaido.android.cardstackview.CardStackView
+            android:id="@+id/card_stack_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#E8E7E7"
-        android:contentDescription="Like"
-        android:padding="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/like"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.495" />
+        <ImageButton
+            android:id="@+id/btnLike"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="75dp"
+            android:backgroundTint="#E8E7E7"
+            android:contentDescription="Like"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/like"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintStart_toEndOf="@+id/btnDislike" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#E8E7E7"
-        android:contentDescription="Dislike"
-        android:cropToPadding="false"
-        android:padding="16dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/close"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <ImageButton
+            android:id="@+id/btnDislike"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="75dp"
+            android:backgroundTint="#E8E7E7"
+            android:contentDescription="Dislike"
+            android:cropToPadding="false"
+            android:padding="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.022"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="textHome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
