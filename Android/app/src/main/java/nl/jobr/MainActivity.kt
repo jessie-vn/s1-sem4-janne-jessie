@@ -98,8 +98,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* Save button Account page */
-    private data class Person(var name: String, var email: String?, var phoneNumber: String?, var occupation: String?)
-    private val person: Person = Person("Casey Web", null, null, null)
+    private val person: Person = Person("Casey Web", null, null, null, null)
     fun saveInformation(view: View) {
         val name: EditText = findViewById(R.id.etName)
         val email: EditText = findViewById(R.id.etEmail)
