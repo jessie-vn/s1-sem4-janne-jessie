@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.yuyakaido.android.cardstackview.*
@@ -34,14 +33,12 @@ class HomeFragment : Fragment(), CardStackListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-        ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val context = requireContext()
-        cardStackView = root.findViewById<CardStackView>(R.id.card_stack_view)
+        cardStackView = root.findViewById(R.id.card_stack_view)
 
         manager = CardStackLayoutManager(context, this)
         adapter = CardStackAdapter(createCompanies())
