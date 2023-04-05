@@ -13,12 +13,15 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import nl.jobr.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var db: FirebaseDatabase
+    private lateinit var reference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,18 +101,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* Save button Account page */
-    private val person: Person = Person("Casey Web", null, null, null, null)
+    // Account gotten out of database if we had a login :)
+    private val account: Account = Account(1,"Casey Web", null, null, null, null)
     fun saveInformation(view: View) {
         val name: EditText = findViewById(R.id.etName)
         val email: EditText = findViewById(R.id.etEmail)
         val phoneNumber: EditText = findViewById(R.id.etPhoneNumber)
         val occupation: EditText = findViewById(R.id.etOccupation)
 
-        if (person != null) {
-            if (name.text.trim().isNotEmpty()) { person.name = name.text.toString() }
-            if (email.text.trim().isNotEmpty()) { person.email = email.text.toString() }
-            if (phoneNumber.text.trim().isNotEmpty()) { person.phoneNumber = phoneNumber.text.toString() }
-            if (occupation.text.trim().isNotEmpty()) { person.occupation = occupation.text.toString() }
+        if (account != null) {
+            if (name.text.trim().isNotEmpty()) { account.name = name.text.toString() }
+            if (email.text.trim().isNotEmpty()) { account.email = email.text.toString() }
+            if (phoneNumber.text.trim().isNotEmpty()) { account.phoneNumber = phoneNumber.text.toString() }
+            if (occupation.text.trim().isNotEmpty()) { account.occupation = occupation.text.toString() }
+
+            // Add changes to database
+            if (name.text.trim().isNotEmpty() || email.text.trim().isNotEmpty() || phoneNumber.text.trim().isNotEmpty()
+                || occupation.text.trim().isNotEmpty()) {
+                db = FirebaseDatabase.getInstance()
+                reference = db.getReference("Account")
+                reference.child(account.id.toString() + ": " + account.name).setValue(account)
+            }
             updateAccountBoxes()
             Toast.makeText(getBaseContext(), "Your information has been updated", Toast.LENGTH_SHORT ).show();
         }
@@ -120,11 +132,11 @@ class MainActivity : AppCompatActivity() {
         val phoneNumber: EditText = findViewById(R.id.etPhoneNumber)
         val occupation: EditText = findViewById(R.id.etOccupation)
 
-        if (person != null) {
-            if (person.name != null) { name.hint = person.name }
-            if (person.email != null) { email.hint = person.email }
-            if (person.phoneNumber != null) { phoneNumber.hint = person.phoneNumber }
-            if (person.occupation != null) { occupation.hint = person.occupation }
+        if (account != null) {
+            if (account.name != null) { name.hint = account.name }
+            if (account.email != null) { email.hint = account.email }
+            if (account.phoneNumber != null) { phoneNumber.hint = account.phoneNumber }
+            if (account.occupation != null) { occupation.hint = account.occupation }
         }
 
         // Clean up boxes
