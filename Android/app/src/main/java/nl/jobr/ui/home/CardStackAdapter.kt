@@ -1,7 +1,5 @@
 package nl.jobr.ui.home
 
-import nl.jobr.R
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import nl.jobr.R
+
 
 class CardStackAdapter(
     private var companies: List<Company> = emptyList()
@@ -29,8 +29,13 @@ class CardStackAdapter(
             .load(company.url)
             .error(R.drawable.no_image)
             .into(holder.image)
-        holder.itemView.setOnClickListener { v ->
-            Toast.makeText(v.context, company.name, Toast.LENGTH_SHORT).show()
+
+        //TODO: Add functionalities
+        holder.fade.setOnClickListener { v ->
+            Toast.makeText(v.context, "fade", Toast.LENGTH_SHORT).show()
+        }
+        holder.image.setOnClickListener { v ->
+            Toast.makeText(v.context, "picture", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -51,6 +56,8 @@ class CardStackAdapter(
         var position: TextView = view.findViewById(R.id.item_position)
         var city: TextView = view.findViewById(R.id.item_city)
         var image: ImageView = view.findViewById(R.id.item_image)
+
+        var fade: ImageView = view.findViewById(R.id.fade)
     }
 
 }
