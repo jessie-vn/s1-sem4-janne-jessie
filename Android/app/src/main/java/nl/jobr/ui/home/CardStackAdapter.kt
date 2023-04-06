@@ -27,7 +27,7 @@ class CardStackAdapter(
         holder.city.text = company.city
         Glide.with(holder.image)
             .load(company.url)
-            .error(R.drawable.not_found)
+            .error(R.drawable.no_image)
             .into(holder.image)
         holder.itemView.setOnClickListener { v ->
             Toast.makeText(v.context, company.name, Toast.LENGTH_SHORT).show()
