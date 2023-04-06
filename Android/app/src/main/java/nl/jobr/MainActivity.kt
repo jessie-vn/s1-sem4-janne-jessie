@@ -1,5 +1,6 @@
 package nl.jobr
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -13,15 +14,17 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import nl.jobr.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var db: FirebaseDatabase
-    private lateinit var reference: DatabaseReference
+    private val dataAccess : DataAccess = DataAccess()
+
+    // Account and Resume gotten out of database if we had a login :)
+    private var account: Account = Account()
+    private var resume: Resume = Resume()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +32,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        // Getting Account and Resume
+        account = dataAccess.getAccountData()
+        resume = account.resume
 
+        val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navController
         // Passing each menu ID as a set of Ids because each
@@ -47,15 +53,16 @@ class MainActivity : AppCompatActivity() {
 
     /* Survey btn Resume page */
     private var idx: Int = 0;
-    private data class Question(val question1: String, val type1: Int, var answer1: String?, val question2: String, val type2: Int, var answer2: String?)
+    private data class Question(val question1: String, val type1: Int, val question2: String, val type2: Int)
     private val questions = arrayOf(
-        Question("What is your name?", InputType.TYPE_CLASS_TEXT, null,"What is your age?", InputType.TYPE_CLASS_NUMBER, null),
-        Question("What company are you currently working for?", InputType.TYPE_CLASS_TEXT, null,"What companies have you worked for?", InputType.TYPE_CLASS_TEXT, null),
-        Question("How long have you worked for your current company?", InputType.TYPE_CLASS_TEXT, null,"What skills do you have?", InputType.TYPE_CLASS_TEXT, null)
+        Question("What is your name?", InputType.TYPE_CLASS_TEXT, "What is your age?", InputType.TYPE_CLASS_NUMBER),
+        Question("What company are you currently working for?", InputType.TYPE_CLASS_TEXT, "What companies have you worked for?", InputType.TYPE_CLASS_TEXT),
+        Question("How long have you worked for your current company?", InputType.TYPE_CLASS_TEXT, "What skills do you have?", InputType.TYPE_CLASS_TEXT)
     )
     fun continueSurvey(view: View) {
         for (i in idx until questions.size) {
             updateQuestions(idx)
+            dataAccess.updateResume(resume) // Add changes to database
             break
         }
         //idx++
@@ -74,14 +81,18 @@ class MainActivity : AppCompatActivity() {
         val question2: TextView = findViewById(R.id.tvAge)
         val type2: EditText = findViewById(R.id.nbAge)
 
-        if (type2.text != null) { questions[i].answer2 = type2.text.toString() }
-        if (type1.text.trim().isNotEmpty())
-        { questions[i].answer1 = type1.text.toString() }
+        var idx2 = 0;
+        if (type2.text != null) {
+            resume.answers[idx2] = type2.text.toString()
+        }
+        if (type1.text.trim().isNotEmpty()) {
+            resume.answers[idx2 + 1] = type1.text.toString()
+        }
 
         idx++
-        if (idx >= questions.size) { idx = 0 }
-        Log.d(idx.toString(), "IDX")
-        Log.d(questions[idx].answer1, "Answer1")
+        if (idx >= questions.size) {
+            idx = 0
+        }
 
         question1.text = questions[idx].question1
         type1.inputType = questions[idx].type1
@@ -95,14 +106,13 @@ class MainActivity : AppCompatActivity() {
         type2.text = null
         type2.hint = null
 
-        if (questions[idx].answer1 != null)
-        { type1.hint = questions[idx].answer1 }
-        if (questions[idx].answer2 != null) { type2.hint = questions[idx].answer2 }
+        if (resume.answers[idx2] != null)
+        { type1.hint = resume.answers[i] }
+        if (resume.answers[idx2+1] != null) { type2.hint = resume.answers[i+1] }
+        idx2 = idx2+2
     }
 
     /* Save button Account page */
-    // Account gotten out of database if we had a login :)
-    private val account: Account = Account(1,"Casey Web", null, null, null, null)
     fun saveInformation(view: View) {
         val name: EditText = findViewById(R.id.etName)
         val email: EditText = findViewById(R.id.etEmail)
@@ -118,9 +128,7 @@ class MainActivity : AppCompatActivity() {
             // Add changes to database
             if (name.text.trim().isNotEmpty() || email.text.trim().isNotEmpty() || phoneNumber.text.trim().isNotEmpty()
                 || occupation.text.trim().isNotEmpty()) {
-                db = FirebaseDatabase.getInstance()
-                reference = db.getReference("Account")
-                reference.child(account.id.toString() + ": " + account.name).setValue(account)
+                dataAccess.updateAccount(account)
             }
             updateAccountBoxes()
             Toast.makeText(getBaseContext(), "Your information has been updated", Toast.LENGTH_SHORT ).show();
