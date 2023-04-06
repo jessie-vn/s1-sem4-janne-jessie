@@ -1,11 +1,14 @@
 package nl.jobr.ui.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -14,9 +17,13 @@ import com.yuyakaido.android.cardstackview.*
 import com.yuyakaido.android.cardstackview.CardStackView
 import nl.jobr.R
 import nl.jobr.databinding.FragmentMatchBinding
+import com.yuyakaido.android.cardstackview.Direction
 
 
 class MatchFragment : Fragment(), CardStackListener {
+
+    private lateinit var btnDislike: ImageButton
+    private lateinit var btnLike: ImageButton
 
     private lateinit var cardStackView : CardStackView
     private lateinit var manager: CardStackLayoutManager
@@ -40,6 +47,17 @@ class MatchFragment : Fragment(), CardStackListener {
         val context = requireContext()
         cardStackView = root.findViewById(R.id.card_stack_view)
 
+        btnDislike = root.findViewById(R.id.btnDislike)
+        btnLike = root.findViewById(R.id.btnLike)
+
+        btnDislike.setOnClickListener {
+            handler.postDelayed({ update(btnDislike) }, DELAY_TIME)
+        }
+
+        btnLike.setOnClickListener {
+            handler.postDelayed({ update(btnLike) }, DELAY_TIME)
+        }
+
         manager = CardStackLayoutManager(context, this)
         adapter = CardStackAdapter(createCompanies())
 
@@ -50,6 +68,22 @@ class MatchFragment : Fragment(), CardStackListener {
         setupCardStackView()
 
         return root
+    }
+
+    private fun update(button: View) {
+                // Handle dislike button click
+                manager.setSwipeAnimationSetting(
+                    SwipeAnimationSetting.Builder()
+                        .setDirection(if (button.id == R.id.btnLike) Direction.Right else Direction.Left)
+                        .setDuration(Duration.Normal.duration)
+                        .build())
+
+                cardStackView.swipe()
+        handler.postDelayed({ setupCardStackView() }, DELAY_TIME)
+    }
+    companion object {
+        private const val DELAY_TIME = 100L
+        private val handler = Handler(Looper.getMainLooper())
     }
 
     override fun onCardDragging(direction: Direction, ratio: Float) {
@@ -119,8 +153,9 @@ class MatchFragment : Fragment(), CardStackListener {
 
     private fun createCompanies(): List<Company> {
         val companies = ArrayList<Company>()
-        companies.add(Company(name = "Yasaka Shrine", city = "Kyoto", url = "https://source.unsplash.com/Xq1ntWruZQI/600x800"))
-        companies.add(Company(name = "Fushimi Inari Shrine", city = "Kyoto", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800"))
+        companies.add(Company(name = "Fontys Hogeschool", openPosition = "Teacher ICT Smart mobile", city = "Eindhoven", url = "https://yt3.googleusercontent.com/ytc/AL5GRJUei-YFtil1rTe6CsZ0v_ejWk2No8LKKQrHktewhg=s176-c-k-c0x00ffffff-no-rj"))
+        companies.add(Company(name = "Hard Rock Cafe", openPosition = "Bartender", city = "Amsterdam", url = "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/b98c482e48e4079242bfa8e3439699ad"))
+        companies.add(Company(name = "WerkCentrale Nederland", openPosition = "Manager Customer Service", city = "Rozenburg", url = ""))
         return companies
     }
 
