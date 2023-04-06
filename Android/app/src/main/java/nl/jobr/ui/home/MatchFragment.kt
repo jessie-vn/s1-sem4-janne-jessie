@@ -1,5 +1,7 @@
 package nl.jobr.ui.home
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +12,7 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
@@ -50,11 +53,17 @@ class MatchFragment : Fragment(), CardStackListener {
         btnDislike = root.findViewById(R.id.btnDislike)
         btnLike = root.findViewById(R.id.btnLike)
 
+        val (gray, red, green) = getButtonColors()
+
         btnDislike.setOnClickListener {
+            btnDislike.backgroundTintList = ColorStateList.valueOf(red)
+            btnDislike.imageTintList = ColorStateList.valueOf(gray)
             handler.postDelayed({ update(btnDislike) }, DELAY_TIME)
         }
 
         btnLike.setOnClickListener {
+            btnLike.backgroundTintList = ColorStateList.valueOf(green)
+            btnLike.imageTintList = ColorStateList.valueOf(gray)
             handler.postDelayed({ update(btnLike) }, DELAY_TIME)
         }
 
@@ -86,8 +95,50 @@ class MatchFragment : Fragment(), CardStackListener {
         private val handler = Handler(Looper.getMainLooper())
     }
 
+    private fun getButtonColors(): Triple<Int, Int, Int> {
+        val gray = ContextCompat.getColor(context!!, R.color.light_gray)
+        val red = ContextCompat.getColor(context!!, R.color.red)
+        val green = ContextCompat.getColor(context!!, R.color.green)
+        return Triple(gray, red, green)
+    }
+
     override fun onCardDragging(direction: Direction, ratio: Float) {
         Log.d("CardStackView", "onCardDragging: d = ${direction.name}, r = $ratio")
+
+        val (gray, red, green) = getButtonColors()
+
+        fun setButtonTint(button: ImageButton, color: Int, ratio: Float) {
+            button.backgroundTintList = if (ratio < 0.6) {
+                val hsv = FloatArray(3)
+                Color.colorToHSV(color, hsv)
+                hsv[1] = ratio / 0.6f * 0.75f
+                ColorStateList.valueOf(Color.HSVToColor(hsv))
+            } else {
+                ColorStateList.valueOf(color)
+            }
+        }
+        fun setForegroundTint(button: ImageButton, color: Int, ratio: Float) {
+            button.imageTintList = if (ratio < 0.6) {
+                val hsv = FloatArray(3)
+                Color.colorToHSV(color, hsv)
+                hsv[1] = 1-(ratio / 0.4f)
+                ColorStateList.valueOf(Color.HSVToColor(hsv))
+            } else {
+                ColorStateList.valueOf(gray)
+            }
+        }
+
+        if (direction == Direction.Left) {
+            btnLike.backgroundTintList = ColorStateList.valueOf(gray)
+            btnLike.imageTintList = ColorStateList.valueOf(green)
+            setButtonTint(btnDislike, red, ratio)
+            setForegroundTint(btnDislike, red, ratio)
+        } else if (direction == Direction.Right) {
+            btnDislike.backgroundTintList = ColorStateList.valueOf(gray)
+            btnDislike.imageTintList = ColorStateList.valueOf(red)
+            setButtonTint(btnLike, green, ratio)
+            setForegroundTint(btnLike, green, ratio)
+        }
     }
 
     override fun onCardSwiped(direction: Direction) {
@@ -95,6 +146,11 @@ class MatchFragment : Fragment(), CardStackListener {
         if (manager.topPosition == adapter.itemCount - 1) {
             paginate()
         }
+        val (gray, red, green) = getButtonColors()
+        btnDislike.backgroundTintList = ColorStateList.valueOf(gray)
+        btnLike.backgroundTintList = ColorStateList.valueOf(gray)
+        btnDislike.imageTintList = ColorStateList.valueOf(red)
+        btnLike.imageTintList = ColorStateList.valueOf(green)
     }
 
     override fun onCardRewound() {
@@ -103,6 +159,11 @@ class MatchFragment : Fragment(), CardStackListener {
 
     override fun onCardCanceled() {
         Log.d("CardStackView", "onCardCanceled: ${manager.topPosition}")
+        val (gray, red, green) = getButtonColors()
+        btnDislike.backgroundTintList = ColorStateList.valueOf(gray)
+        btnLike.backgroundTintList = ColorStateList.valueOf(gray)
+        btnDislike.imageTintList = ColorStateList.valueOf(red)
+        btnLike.imageTintList = ColorStateList.valueOf(green)
     }
 
     override fun onCardAppeared(view: View, position: Int) {
@@ -121,11 +182,8 @@ class MatchFragment : Fragment(), CardStackListener {
 
     private fun initialize() {
         manager.setStackFrom(StackFrom.None)
-        manager.setVisibleCount(3)
-        manager.setTranslationInterval(8.0f)
-        manager.setScaleInterval(0.95f)
         manager.setSwipeThreshold(0.3f)
-        manager.setMaxDegree(20.0f)
+        manager.setMaxDegree(40f)
         manager.setDirections(Direction.HORIZONTAL)
         manager.setCanScrollHorizontal(true)
         manager.setCanScrollVertical(true)
