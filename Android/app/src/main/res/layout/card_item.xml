@@ -19,17 +19,19 @@
             android:layout_width="430dp"
             android:layout_height="460dp"
             android:background="#00000000"
-            android:contentDescription="Avatar"
-            android:scaleType="center"
+            android:contentDescription="@string/company_pictures"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.11" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="VisualLintBounds"
+            tools:srcCompat="@drawable/fontys" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/fade"
             android:layout_width="447dp"
             android:layout_height="105dp"
             android:layout_marginTop="352dp"
@@ -37,7 +39,9 @@
             android:src="@drawable/fade"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_image" />
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:ignore="VisualLintBounds"
+            android:contentDescription="@string/fading" />
 
         <TextView
             android:id="@+id/item_city"
@@ -46,11 +50,11 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="420dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Eindhoven"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_image" />
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:text="Eindhoven" />
 
         <TextView
             android:id="@+id/item_name"
@@ -59,43 +63,43 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="352dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Fontys hogeschool"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_image" />
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:text="Fontys hogeschool" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/item_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="394dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Teacher ICT Smart mobile"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_image" />
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:text="Teacher ICT Smart mobile" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/verify"
             android:layout_width="25dp"
             android:layout_height="40dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="356dp"
-            android:contentDescription="Verified checkmark"
+            android:contentDescription="@string/verified_checkmark"
             android:src="@drawable/check"
             app:layout_constraintStart_toEndOf="@+id/item_name"
             app:layout_constraintTop_toTopOf="@+id/item_image" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/moreInfo"
             android:layout_width="50dp"
             android:layout_height="47dp"
             android:layout_marginEnd="14dp"
             android:layout_marginBottom="14dp"
-            android:contentDescription="More info"
+            android:contentDescription="@string/more_info"
             android:scaleType="centerInside"
             android:src="@drawable/more"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -10,7 +10,7 @@
             android:id="@+id/card_stack_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            android:contentDescription="@string/swipeable_card" />
 
         <ImageButton
             android:id="@+id/btnLike"
@@ -19,7 +19,7 @@
             android:layout_marginEnd="80dp"
             android:layout_marginBottom="75dp"
             android:backgroundTint="#E8E7E7"
-            android:contentDescription="Like"
+            android:contentDescription="@string/like"
             android:padding="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/like"
@@ -35,7 +35,7 @@
             android:layout_marginStart="80dp"
             android:layout_marginBottom="75dp"
             android:backgroundTint="#E8E7E7"
-            android:contentDescription="Dislike"
+            android:contentDescription="@string/dislike"
             android:cropToPadding="false"
             android:padding="16dp"
             android:scaleType="fitXY"
@@ -44,15 +44,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.022"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="textHome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
