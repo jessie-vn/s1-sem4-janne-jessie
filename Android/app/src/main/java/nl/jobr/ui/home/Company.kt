@@ -3,6 +3,7 @@ package nl.jobr.ui.home
 data class Company(
     val id: Long = counter++,
     val name: String,
+    val openPosition: String,
     val city: String,
     val url: String
 ) {

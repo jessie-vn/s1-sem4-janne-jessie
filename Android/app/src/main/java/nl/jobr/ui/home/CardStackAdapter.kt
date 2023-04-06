@@ -23,10 +23,11 @@ class CardStackAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val company = companies[position]
         holder.name.text = company.name
+        holder.position.text = company.openPosition
         holder.city.text = company.city
         Glide.with(holder.image)
             .load(company.url)
-            .error(R.drawable.fontys)
+            .error(R.drawable.not_found)
             .into(holder.image)
         holder.itemView.setOnClickListener { v ->
             Toast.makeText(v.context, company.name, Toast.LENGTH_SHORT).show()
@@ -47,6 +48,7 @@ class CardStackAdapter(
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.item_name)
+        var position: TextView = view.findViewById(R.id.item_position)
         var city: TextView = view.findViewById(R.id.item_city)
         var image: ImageView = view.findViewById(R.id.item_image)
     }

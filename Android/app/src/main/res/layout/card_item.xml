@@ -33,15 +33,15 @@
         <ImageView
             android:id="@+id/fade"
             android:layout_width="447dp"
-            android:layout_height="105dp"
+            android:layout_height="107dp"
             android:layout_marginTop="352dp"
+            android:contentDescription="@string/fading"
             android:scaleType="center"
             android:src="@drawable/fade"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/item_image"
-            tools:ignore="VisualLintBounds"
-            android:contentDescription="@string/fading" />
+            tools:ignore="VisualLintBounds" />
 
         <TextView
             android:id="@+id/item_city"
@@ -95,13 +95,13 @@
 
         <ImageView
             android:id="@+id/moreInfo"
-            android:layout_width="50dp"
-            android:layout_height="47dp"
+            android:layout_width="38dp"
+            android:layout_height="34dp"
             android:layout_marginEnd="14dp"
             android:layout_marginBottom="14dp"
             android:contentDescription="@string/more_info"
             android:scaleType="centerInside"
-            android:src="@drawable/more"
+            android:src="@drawable/more_info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
