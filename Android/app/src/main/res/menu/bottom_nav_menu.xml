@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_resume"
         android:icon="@drawable/file_solid"
-        android:title="Resume" />
+        android:title="@string/resume" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/house_solid"
-        android:title="Home" />
+        android:id="@+id/navigation_match"
+        android:icon="@drawable/handshake_solid"
+        android:title="@string/match" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_account"
         android:icon="@drawable/user_solid"
-        android:title="Account" />
+        android:title="@string/account" />
 
 </menu>

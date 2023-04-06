@@ -13,16 +13,16 @@ import androidx.recyclerview.widget.DiffUtil
 import com.yuyakaido.android.cardstackview.*
 import com.yuyakaido.android.cardstackview.CardStackView
 import nl.jobr.R
-import nl.jobr.databinding.FragmentHomeBinding
+import nl.jobr.databinding.FragmentMatchBinding
 
 
-class HomeFragment : Fragment(), CardStackListener {
+class MatchFragment : Fragment(), CardStackListener {
 
     private lateinit var cardStackView : CardStackView
     private lateinit var manager: CardStackLayoutManager
     private lateinit var adapter: CardStackAdapter
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentMatchBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,7 +34,7 @@ class HomeFragment : Fragment(), CardStackListener {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentMatchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val context = requireContext()

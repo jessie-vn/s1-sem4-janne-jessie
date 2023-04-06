@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.MatchFragment">
 
         <com.yuyakaido.android.cardstackview.CardStackView
             android:id="@+id/card_stack_view"
@@ -26,7 +26,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.958"
-            app:layout_constraintStart_toEndOf="@+id/btnDislike" />
+            app:layout_constraintStart_toEndOf="@+id/btnDislike"
+            tools:ignore="ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/btnDislike"
@@ -43,6 +44,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.022"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
