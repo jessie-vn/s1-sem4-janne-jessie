@@ -35,18 +35,33 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <TextView
+        android:id="@+id/tvSkills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="216dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="What skills do you possess?"
+        android:textColor="#FF5800"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
         android:id="@+id/tvAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/poppins_medium"
         android:text="What is your age?"
         android:textColor="#FF5800"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
@@ -67,28 +82,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-    <EditText
-        android:id="@+id/nbAge"
-        android:layout_width="376dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:inputType="numberSigned"
-        android:textColor="#FF5800"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAge" />
-
     <Button
         android:id="@+id/bContinue"
         android:layout_width="152dp"
         android:layout_height="50dp"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="130dp"
         android:background="#ff5900"
         android:drawableEnd="@drawable/arrow_right_solid_white"
@@ -101,6 +99,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nbAge" />
+        tools:layout_editor_absoluteY="655dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="376dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAge" />
+
+    <RadioGroup
+        android:layout_width="380dp"
+        android:layout_height="193dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSkills">
+
+        <RadioButton
+            android:id="@+id/rbKotlin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Kotlin"
+            android:textColor="#FF5800" />
+
+        <RadioButton
+            android:id="@+id/rbJava"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Java"
+            android:textColor="#FF5800" />
+
+        <RadioButton
+            android:id="@+id/rcCShark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="C++"
+            android:textColor="#FF5800" />
+
+        <RadioButton
+            android:id="@+id/rbUXDesign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="UX Design"
+            android:textColor="#FF5800" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
