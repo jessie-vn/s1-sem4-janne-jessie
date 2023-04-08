@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     // Account and Resume gotten out of database if we had a login :)
     private var account: Account = Account()
-    private var resume: Resume = Resume()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         // Getting Account and Resume
         account = dataAccess.getAccountData()
-        resume = account.resume
+        account.resume.addQuestions()
+        account.resume.questions[0].answer = account.name
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -49,56 +49,46 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setSelectedItemId(R.id.navigation_home)
+
+        val type1: EditText = findViewById(R.id.tbName)
+        val type2: EditText = findViewById(R.id.nbAge)
+        if (account.resume.questions[0].answer != null) {
+            type1.hint = account.resume.questions[0].answer
+        }
+        if (account.resume.questions[1].answer != null) {
+            type2.hint = account.resume.questions[1].answer
+        }
     }
 
     /* Survey btn Resume page */
     private var idx: Int = 0;
-    private data class Question(val question1: String, val type1: Int, val question2: String, val type2: Int)
-    private val questions = arrayOf(
-        Question("What is your name?", InputType.TYPE_CLASS_TEXT, "What is your age?", InputType.TYPE_CLASS_NUMBER),
-        Question("What company are you currently working for?", InputType.TYPE_CLASS_TEXT, "What companies have you worked for?", InputType.TYPE_CLASS_TEXT),
-        Question("How long have you worked for your current company?", InputType.TYPE_CLASS_TEXT, "What skills do you have?", InputType.TYPE_CLASS_TEXT)
-    )
     fun continueSurvey(view: View) {
-        for (i in idx until questions.size) {
-            updateQuestions(idx)
-            dataAccess.updateResume(resume) // Add changes to database
+        for (i in idx until account.resume.questions.size) {
+            updateQuestions(idx, idx+1)
+            dataAccess.updateResume(account.resume) // Add changes to database
             break
         }
-        //idx++
+        idx += 2
 
         // Check if last question is already displayed
-        if (idx > questions.size) {
+        if (idx > account.resume.questions.size) {
             Toast.makeText(getBaseContext(), "Your resume has been updated", Toast.LENGTH_SHORT ).show();
-            idx = 0;
-            updateQuestions(idx)
-            idx = 1;
+            updateQuestions(0, 1)
+            idx = 2;
         }
     }
-    private fun updateQuestions(i: Int) {
+    private fun updateQuestions(i1: Int, i2: Int) {
         val question1: TextView = findViewById(R.id.tvName)
         val type1: EditText = findViewById(R.id.tbName)
         val question2: TextView = findViewById(R.id.tvAge)
         val type2: EditText = findViewById(R.id.nbAge)
 
-        var idx2 = 0;
-        if (type2.text != null) {
-            resume.answers[idx2] = type2.text.toString()
+        if (type1.text.trim().isNotEmpty() && account.resume.questions[i1].answer != null) {
+            account.resume.questions[i1].answer = type1.text.toString()
         }
-        if (type1.text.trim().isNotEmpty()) {
-            resume.answers[idx2 + 1] = type1.text.toString()
+        if (type2.text.trim().isNotEmpty() && account.resume.questions[i1].answer != null) {
+            account.resume.questions[i2].answer = type2.text.toString()
         }
-
-        idx++
-        if (idx >= questions.size) {
-            idx = 0
-        }
-
-        question1.text = questions[idx].question1
-        type1.inputType = questions[idx].type1
-
-        question2.text = questions[idx].question2
-        type2.inputType = questions[idx].type2
 
         // Clean Edit View
         type1.text = null
@@ -106,10 +96,29 @@ class MainActivity : AppCompatActivity() {
         type2.text = null
         type2.hint = null
 
-        if (resume.answers[idx2] != null)
-        { type1.hint = resume.answers[i] }
-        if (resume.answers[idx2+1] != null) { type2.hint = resume.answers[i+1] }
-        idx2 = idx2+2
+        Log.d(account.resume.questions.size.toString(), "Yes")
+        if (i1+2 >= account.resume.questions.size && i1+2 >= account.resume.questions.size) {
+            question1.text = account.resume.questions[0].question
+            question2.text = account.resume.questions[1].question
+
+            if (account.resume.questions[0].answer != null) {
+                type1.hint = account.resume.questions[0].answer
+            }
+            if (account.resume.questions[1].answer != null) {
+                type2.hint = account.resume.questions[1].answer
+            }
+        }
+        else {
+            question1.text = account.resume.questions[i1+2].question
+            question2.text = account.resume.questions[i2+2].question
+
+            if (account.resume.questions[i1 + 2].answer != null) {
+                type1.hint = account.resume.questions[i1 + 2].answer
+            }
+            if (account.resume.questions[i2 + 2].answer != null) {
+                type2.hint = account.resume.questions[i2 + 2].answer
+            }
+        }
     }
 
     /* Save button Account page */
