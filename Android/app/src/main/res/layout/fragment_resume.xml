@@ -107,7 +107,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="20"
+                android:text="35"
                 android:textAlignment="center"
                 android:textColor="#FF5800"
                 android:textSize="16sp"
@@ -119,12 +119,13 @@
 
             <SeekBar
                 android:id="@+id/sbAge"
-                android:layout_width="376dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="20dp"
+                android:layout_width="396dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="4dp"
                 android:max="50"
                 android:min="15"
+                android:progress="30"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAge" />
 
@@ -133,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="What skills do you possess?"
                 android:textColor="#FF5800"

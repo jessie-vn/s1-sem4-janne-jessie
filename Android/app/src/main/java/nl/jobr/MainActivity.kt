@@ -1,11 +1,10 @@
 package nl.jobr
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.*
+import android.widget.SeekBar.OnSeekBarChangeListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -40,15 +39,16 @@ class MainActivity : AppCompatActivity() {
         navView.setSelectedItemId(R.id.navigation_home);
 
         // TextView displays selected age
-        val ageSlider: SeekBar = findViewById(R.id.sbAge)
-        val ageNumber: TextView = findViewById(R.id.tvSelectedAge)
-        ageSlider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                ageNumber.text = progress.toString()
+        val sbAge: SeekBar = findViewById(R.id.sbAge)
+        val progressLabel: TextView = findViewById(R.id.tvSelectedAge)
+        sbAge.setOnSeekBarChangeListener(object: OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                Log.d(p1.toString(), "This is the current progress")
+                progressLabel.text = p1.toString()
             }
+            override fun onStartTrackingTouch(p0: SeekBar?) {}
+            override fun onStopTrackingTouch(p0: SeekBar?) {}
 
-            override fun onStartTrackingTouch(seekBar: SeekBar) {}
-            override fun onStopTrackingTouch(seekBar: SeekBar) {}
         })
     }
 
