@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import nl.jobr.R
+import java.util.*
 
 
 class CardStackAdapter(
@@ -25,17 +26,30 @@ class CardStackAdapter(
         holder.name.text = company.name
         holder.position.text = company.openPosition
         holder.city.text = company.city
+        val random = Random()
+        holder.percentage.text = (random.nextInt(91) + 10).toString() + "%"
+
+        // Keep track of the current image index for the company
+        var currentImageIndex = 0
+
         Glide.with(holder.image)
-            .load(company.url)
+            .load(company.urls[currentImageIndex]) // Load the first image
             .error(R.drawable.no_image)
             .into(holder.image)
 
         //TODO: Add functionalities
         holder.fade.setOnClickListener { v ->
-            Toast.makeText(v.context, "fade", Toast.LENGTH_SHORT).show()
+            Toast.makeText(v.context, "More info", Toast.LENGTH_SHORT).show()
         }
+
         holder.image.setOnClickListener { v ->
-            Toast.makeText(v.context, "picture", Toast.LENGTH_SHORT).show()
+            // Increment the current image index
+            currentImageIndex = (currentImageIndex + 1) % company.urls.size
+
+            Glide.with(holder.image)
+                .load(company.urls[currentImageIndex])
+                .error(R.drawable.no_image)
+                .into(holder.image)
         }
     }
 
@@ -58,6 +72,7 @@ class CardStackAdapter(
         var image: ImageView = view.findViewById(R.id.item_image)
 
         var fade: ImageView = view.findViewById(R.id.fade)
+        var percentage: TextView = view.findViewById(R.id.percentage_text)
     }
 
 }

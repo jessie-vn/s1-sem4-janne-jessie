@@ -5,7 +5,7 @@ data class Company(
     val name: String,
     val openPosition: String,
     val city: String,
-    val url: String
+    val urls: List<String>
 ) {
     companion object {
         private var counter = 0L

@@ -211,9 +211,17 @@ class MatchFragment : Fragment(), CardStackListener {
 
     private fun createCompanies(): List<Company> {
         val companies = ArrayList<Company>()
-        companies.add(Company(name = "Fontys Hogeschool", openPosition = "Teacher ICT Smart mobile", city = "Eindhoven", url = "https://yt3.googleusercontent.com/ytc/AL5GRJUei-YFtil1rTe6CsZ0v_ejWk2No8LKKQrHktewhg=s176-c-k-c0x00ffffff-no-rj"))
-        companies.add(Company(name = "Hard Rock Cafe", openPosition = "Bartender", city = "Amsterdam", url = "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/b98c482e48e4079242bfa8e3439699ad"))
-        companies.add(Company(name = "WerkCentrale Nederland", openPosition = "Manager Customer Service", city = "Rozenburg", url = ""))
+        companies.add(Company(name = "Fontys Hogeschool", openPosition = "Teacher ICT Smart mobile", city = "Eindhoven", urls = listOf(
+            "https://yt3.googleusercontent.com/ytc/AL5GRJUei-YFtil1rTe6CsZ0v_ejWk2No8LKKQrHktewhg=s176-c-k-c0x00ffffff-no-rj",
+            "https://yt3.googleusercontent.com/ytc/AL5GRJWDqmxYFhm2QFG1bU_nw9M4HiFstBtOxvFp2Ikv_A=s900-c-k-c0x00ffffff-no-rj",
+            "https://www.fontysictinnovationlab.nl/site/assets/files/1049/strijptq-entry.png",
+            "https://www.studiomoj.nl/wp-content/uploads/2018/09/lr-FH-ICT-12.jpg")))
+        companies.add(Company(name = "Hard Rock Cafe", openPosition = "Bartender", city = "Amsterdam", urls = listOf(
+            "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/b98c482e48e4079242bfa8e3439699ad"
+        )))
+        companies.add(Company(name = "WerkCentrale Nederland", openPosition = "Manager Customer Service", city = "Rozenburg", urls = listOf(
+            ""
+        )))
         return companies
     }
 
