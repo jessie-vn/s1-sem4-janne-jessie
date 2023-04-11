@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import nl.jobr.R
 import java.util.*
 
@@ -49,7 +50,13 @@ class CardStackAdapter(
             Glide.with(holder.image)
                 .load(company.urls[currentImageIndex])
                 .error(R.drawable.no_image)
+                .transition(DrawableTransitionOptions.withCrossFade(300))
                 .into(holder.image)
+
+            val preloadIndex = (currentImageIndex + 1) % company.urls.size
+            Glide.with(v)
+                .load(company.urls[preloadIndex])
+                .preload()
         }
     }
 
