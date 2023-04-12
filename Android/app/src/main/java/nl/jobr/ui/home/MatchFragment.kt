@@ -2,9 +2,6 @@ package nl.jobr.ui.home
 
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +21,9 @@ import nl.jobr.R
 import nl.jobr.databinding.FragmentMatchBinding
 import com.yuyakaido.android.cardstackview.Direction
 import android.content.Context
+import android.content.Context.VIBRATOR_SERVICE
 import android.content.SharedPreferences
+import android.os.*
 
 
 class MatchFragment : Fragment(), CardStackListener {
@@ -187,9 +186,21 @@ class MatchFragment : Fragment(), CardStackListener {
         btnDislike.imageTintList = ColorStateList.valueOf(red)
         btnLike.imageTintList = ColorStateList.valueOf(green)
     }
-
+    @Suppress("DEPRECATION")
+    private fun vibratePhone() {
+        val vibrator = context?.getSystemService(VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(1000)
+        }
+    }
     override fun onCardAppeared(view: View, position: Int) {
         val textView = view.findViewById<TextView>(R.id.item_name)
+        val percentage = view.findViewById<TextView>(R.id.percentage_text)
+        if (percentage.text.toString().replace("%", "").toInt() >= 80) {
+            vibratePhone()
+        }
         Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
     }
 
