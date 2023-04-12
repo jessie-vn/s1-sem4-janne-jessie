@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvChatTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="27dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Fontys"
+        android:textColor="#FF5800"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivChatIcon"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleChats" />
+
+    <TextView
+        android:id="@+id/tvChatContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="You got invited for a job interview!"
+        android:textColor="#FF5800"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/ivChatIcon"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleChats" />
+
+    <TextView
+        android:id="@+id/tvTitleChats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="19dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Chats"
+        android:textColor="#FF5800"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivChatIcon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleChats"
+        app:srcCompat="@drawable/fontys" />
+</androidx.constraintlayout.widget.ConstraintLayout>

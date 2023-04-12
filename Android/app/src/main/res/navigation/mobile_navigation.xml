@@ -22,4 +22,10 @@
         android:name="nl.jobr.ui.account.AccountFragment"
         android:label="Account"
         tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/navigation_chats"
+        android:name="nl.jobr.ui.chats.ChatsFragment"
+        android:label="Chats"
+        tools:layout="@layout/fragment_chats" />
 </navigation>
