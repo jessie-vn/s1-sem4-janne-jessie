@@ -23,6 +23,8 @@ import com.yuyakaido.android.cardstackview.CardStackView
 import nl.jobr.R
 import nl.jobr.databinding.FragmentMatchBinding
 import com.yuyakaido.android.cardstackview.Direction
+import android.content.Context
+import android.content.SharedPreferences
 
 
 class MatchFragment : Fragment(), CardStackListener {
@@ -36,10 +38,9 @@ class MatchFragment : Fragment(), CardStackListener {
     private lateinit var adapter: CardStackAdapter
 
     private var _binding: FragmentMatchBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +59,12 @@ class MatchFragment : Fragment(), CardStackListener {
 
         btnProfile = root.findViewById(R.id.help_button)
 
+        sharedPreferences = context.getSharedPreferences("MySharedPrefs", Context.MODE_PRIVATE)
+
+        if(sharedPreferences.getString("profile_set", "false") == "true"){
+            btnProfile.visibility = View.GONE
+        }
+
         val (gray, red, green) = getButtonColors()
 
         btnDislike.setOnClickListener {
@@ -75,6 +82,11 @@ class MatchFragment : Fragment(), CardStackListener {
         btnProfile.setOnClickListener{
             val navController = findNavController()
             navController.navigate(R.id.action_fragment_match_to_fragment_account)
+
+            //TODO: Add this code to save button on account page
+            val editor = sharedPreferences.edit()
+            editor.putString("profile_set", "true")
+            editor.apply()
         }
 
         manager = CardStackLayoutManager(context, this)

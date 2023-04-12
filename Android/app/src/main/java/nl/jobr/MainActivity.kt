@@ -1,11 +1,11 @@
 package nl.jobr
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.View
-import android.text.Editable
-import android.webkit.WebView
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -21,8 +21,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        sharedPreferences = getSharedPreferences("MySharedPrefs", Context.MODE_PRIVATE)
+
+        val editor = sharedPreferences.edit()
+        editor.putString("profile_set", "false")
+        editor.apply()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -41,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    private var idx: Int = 0;
+    private var idx: Int = 0
     private data class Question(val question1: String, val type1: Int, var answer1: String?, val question2: String, val type2: Int, var answer2: String?)
     private val questions = arrayOf(
         Question("What is your name?", InputType.TYPE_CLASS_TEXT, null,"What is your age?", InputType.TYPE_CLASS_NUMBER, null),
@@ -57,10 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         // Check if last question is already displayed
         if (idx > questions.size) {
-            Toast.makeText(getBaseContext(), "Your resume has been updated", Toast.LENGTH_SHORT ).show();
-            idx = 0;
+            Toast.makeText(getBaseContext(), "Your resume has been updated", Toast.LENGTH_SHORT ).show()
+            idx = 0
             updateQuestions(idx)
-            idx = 1;
+            idx = 1
         }
     }
     private fun updateQuestions(i: Int) {
