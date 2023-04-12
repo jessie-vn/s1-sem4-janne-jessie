@@ -44,19 +44,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setSelectedItemId(R.id.navigation_home);
-
-        // TextView displays selected age
-        val sbAge: SeekBar = findViewById(R.id.sbAge)
-        val progressLabel: TextView = findViewById(R.id.tvSelectedAge)
-        sbAge.setOnSeekBarChangeListener(object: OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                Log.d(p1.toString(), "This is the current progress")
-                progressLabel.text = p1.toString()
-            }
-            override fun onStartTrackingTouch(p0: SeekBar?) {}
-            override fun onStopTrackingTouch(p0: SeekBar?) {}
-
-        })
     }
 
     /* Survey btn Resume page */
