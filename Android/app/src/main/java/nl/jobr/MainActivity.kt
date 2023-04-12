@@ -1,10 +1,16 @@
 package nl.jobr
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.*
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -12,7 +18,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import nl.jobr.databinding.ActivityMainBinding
 import nl.jobr.ui.chats.ChatsFragment
 
@@ -20,8 +25,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        sharedPreferences = getSharedPreferences("MySharedPrefs", Context.MODE_PRIVATE)
+
+        val editor = sharedPreferences.edit()
+        editor.putString("profile_set", "false")
+        editor.apply()
 
         // Remove Title Bar
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -39,12 +52,12 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_resume, R.id.navigation_home, R.id.navigation_account
+                R.id.navigation_resume, R.id.navigation_match, R.id.navigation_account
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        navView.setSelectedItemId(R.id.navigation_home);
+        navView.setSelectedItemId(R.id.navigation_match)
     }
 
     /* Survey btn Resume page */
@@ -83,6 +96,10 @@ class MainActivity : AppCompatActivity() {
             if (occupation.text.trim().isNotEmpty()) { person.occupation = occupation.text.toString() }
             updateAccountBoxes()
             Toast.makeText(getBaseContext(), "Your information has been updated", Toast.LENGTH_SHORT ).show();
+
+            val editor = sharedPreferences.edit()
+            editor.putString("profile_set", "true")
+            editor.apply()
         }
     }
     private fun updateAccountBoxes() {

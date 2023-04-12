@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">Jobr</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Resume</string>
+    <string name="title_dashboard">Match</string>
+    <string name="title_notifications">Account</string>
+    <string name="swipeable_card">A swipeable card</string>
+    <string name="dislike">Dislike</string>
+    <string name="like">Like</string>
+    <string name="company_pictures">Company pictures</string>
+    <string name="verified_checkmark">Verified checkmark</string>
+    <string name="more_info">More info</string>
+    <string name="fading">fading</string>
+    <string name="resume">Resume</string>
+    <string name="match">Match</string>
+    <string name="account">Account</string>
+    <string name="bubble">Bubble</string>
+    <string name="please_make_sure_to_complete_your_profile_here">Please make sure to complete your profile here.</string>
+    <string name="avatar">Avatar</string>
+    <string name="details">Details:</string>
+    <string name="x">X</string>
 </resources>

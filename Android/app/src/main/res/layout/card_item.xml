@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="visible"
+    app:cardBackgroundColor="#00000000"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/more_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="475dp"
+            android:background="#DFF3F1F1"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="TextSizeCheck"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/detailsView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details"
+                    android:textAlignment="textStart"
+                    android:textColor="#000000"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/close_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end"
+                    android:text="@string/x"
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/company_info"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:text="Fontys Hogeschool" />
+
+            <TextView
+                android:id="@+id/info_hour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:text="40 hours (fulltime)" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="430dp"
+            android:layout_height="460dp"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/company_pictures"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="VisualLintBounds"
+            tools:srcCompat="@drawable/fontys" />
+
+        <ImageView
+            android:id="@+id/fade"
+            android:layout_width="447dp"
+            android:layout_height="107dp"
+            android:layout_marginTop="352dp"
+            android:contentDescription="@string/fading"
+            android:scaleType="center"
+            android:src="@drawable/fade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:ignore="VisualLintBounds" />
+
+        <TextView
+            android:id="@+id/item_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="420dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:text="Eindhoven"
+            tools:ignore="VisualLintOverlap" />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="352dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:text="Fontys hogeschool"
+            tools:ignore="VisualLintOverlap" />
+
+        <TextView
+            android:id="@+id/item_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="394dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_image"
+            tools:text="Teacher ICT Smart mobile"
+            tools:ignore="VisualLintOverlap" />
+
+        <ImageView
+            android:id="@+id/verify"
+            android:layout_width="25dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="356dp"
+            android:contentDescription="@string/verified_checkmark"
+            android:src="@drawable/check"
+            app:layout_constraintStart_toEndOf="@+id/item_name"
+            app:layout_constraintTop_toTopOf="@+id/item_image" />
+
+        <ImageView
+            android:id="@+id/moreInfo"
+            android:layout_width="38dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="14dp"
+            android:contentDescription="@string/more_info"
+            android:scaleType="centerInside"
+            android:src="@drawable/more_info"
+            app:layout_constraintBottom_toBottomOf="@id/fade"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="1dp"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="64dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="-12dp"
+            android:contentDescription="@string/bubble"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle"
+            tools:ignore="VisualLintBounds,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/percentage_text"
+            android:layout_width="42dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck,TextSizeCheck,VisualLintOverlap"
+            tools:text="100%" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

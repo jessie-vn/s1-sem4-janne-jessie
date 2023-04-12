@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.MatchFragment">
+
+        <com.yuyakaido.android.cardstackview.CardStackView
+    android:id="@+id/card_stack_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/swipeable_card" />
+
+        <Button
+            android:id="@+id/help_button"
+            android:layout_width="409dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="195dp"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/please_make_sure_to_complete_your_profile_here"
+            android:paddingBottom="12dp"
+            android:textAlignment="center"
+            android:textColor="#F4F3F3"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck,VisualLintBounds,VisualLintButtonSize,TextSizeCheck,VisualLintOverlap" />
+
+        <ImageButton
+            android:id="@+id/btnLike"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="@color/light_gray"
+            android:contentDescription="@string/like"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/like"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintStart_toEndOf="@+id/btnDislike"
+            app:tint="@color/green"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/btnDislike"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="@color/light_gray"
+            android:contentDescription="@string/dislike"
+            android:cropToPadding="false"
+            android:padding="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.022"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/red"
+            tools:ignore="ImageContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
