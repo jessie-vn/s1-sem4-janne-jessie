@@ -14,6 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:id="@+id/more_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/avatar"
+                android:src="@drawable/profile_picture" />
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/item_image"
             android:layout_width="430dp"
@@ -102,8 +122,9 @@
             android:contentDescription="@string/more_info"
             android:scaleType="centerInside"
             android:src="@drawable/more_info"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/fade"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="1dp"/>
 
         <ImageView
             android:id="@+id/imageView"

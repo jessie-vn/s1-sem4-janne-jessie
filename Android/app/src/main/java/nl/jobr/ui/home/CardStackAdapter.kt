@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -38,9 +38,8 @@ class CardStackAdapter(
             .error(R.drawable.no_image)
             .into(holder.image)
 
-        //TODO: Add functionalities
         holder.fade.setOnClickListener { v ->
-            Toast.makeText(v.context, "More info", Toast.LENGTH_SHORT).show()
+            holder.moreInfoLayout.visibility = View.VISIBLE
         }
 
         holder.image.setOnClickListener { v ->
@@ -80,6 +79,7 @@ class CardStackAdapter(
 
         var fade: ImageView = view.findViewById(R.id.fade)
         var percentage: TextView = view.findViewById(R.id.percentage_text)
+        var moreInfoLayout: LinearLayout = view.findViewById(R.id.more_info_layout)
     }
 
 }
