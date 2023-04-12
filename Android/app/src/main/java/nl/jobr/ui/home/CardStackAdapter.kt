@@ -3,6 +3,7 @@ package nl.jobr.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -25,7 +26,9 @@ class CardStackAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val company = companies[position]
         holder.name.text = company.name
+        holder.company.text = company.name
         holder.position.text = company.openPosition
+        holder.hours.text = company.hours
         holder.city.text = company.city
         val random = Random()
         holder.percentage.text = (random.nextInt(91) + 10).toString() + "%"
@@ -38,8 +41,12 @@ class CardStackAdapter(
             .error(R.drawable.no_image)
             .into(holder.image)
 
-        holder.fade.setOnClickListener { v ->
+        holder.fade.setOnClickListener {
             holder.moreInfoLayout.visibility = View.VISIBLE
+        }
+
+        holder.closeBtn.setOnClickListener{
+            holder.moreInfoLayout.visibility = View.GONE
         }
 
         holder.image.setOnClickListener { v ->
@@ -80,6 +87,10 @@ class CardStackAdapter(
         var fade: ImageView = view.findViewById(R.id.fade)
         var percentage: TextView = view.findViewById(R.id.percentage_text)
         var moreInfoLayout: LinearLayout = view.findViewById(R.id.more_info_layout)
+
+        var closeBtn: Button = view.findViewById(R.id.close_button)
+        var company: TextView = view.findViewById(R.id.company_info)
+        var hours: TextView = view.findViewById(R.id.info_hour)
     }
 
 }

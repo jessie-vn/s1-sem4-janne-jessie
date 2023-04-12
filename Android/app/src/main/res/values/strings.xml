@@ -16,4 +16,6 @@
     <string name="bubble">Bubble</string>
     <string name="please_make_sure_to_complete_your_profile_here">Please make sure to complete your profile here.</string>
     <string name="avatar">Avatar</string>
+    <string name="details">Details:</string>
+    <string name="x">X</string>
 </resources>
