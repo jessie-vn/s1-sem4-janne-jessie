@@ -10,10 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.yuyakaido.android.cardstackview.*
@@ -27,6 +29,7 @@ class MatchFragment : Fragment(), CardStackListener {
 
     private lateinit var btnDislike: ImageButton
     private lateinit var btnLike: ImageButton
+    private lateinit var btnProfile: Button
 
     private lateinit var cardStackView : CardStackView
     private lateinit var manager: CardStackLayoutManager
@@ -53,6 +56,8 @@ class MatchFragment : Fragment(), CardStackListener {
         btnDislike = root.findViewById(R.id.btnDislike)
         btnLike = root.findViewById(R.id.btnLike)
 
+        btnProfile = root.findViewById(R.id.help_button)
+
         val (gray, red, green) = getButtonColors()
 
         btnDislike.setOnClickListener {
@@ -65,6 +70,11 @@ class MatchFragment : Fragment(), CardStackListener {
             btnLike.backgroundTintList = ColorStateList.valueOf(green)
             btnLike.imageTintList = ColorStateList.valueOf(gray)
             handler.postDelayed({ update(btnLike) }, DELAY_TIME)
+        }
+
+        btnProfile.setOnClickListener{
+            val navController = findNavController()
+            navController.navigate(R.id.action_fragment_match_to_fragment_account)
         }
 
         manager = CardStackLayoutManager(context, this)

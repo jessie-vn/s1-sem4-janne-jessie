@@ -15,6 +15,12 @@
         android:name="nl.jobr.ui.home.MatchFragment"
         tools:layout="@layout/fragment_match" />
 
+    <action
+    android:id="@+id/action_fragment_match_to_fragment_account"
+    app:destination="@id/navigation_account"
+    app:popUpTo="@id/navigation_match"
+    app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/navigation_account"
         android:name="nl.jobr.ui.account.AccountFragment"
