@@ -1,19 +1,20 @@
 package nl.jobr
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.*
-import android.widget.SeekBar.OnSeekBarChangeListener
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import nl.jobr.databinding.ActivityMainBinding
+import nl.jobr.ui.chats.ChatsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,7 +53,18 @@ class MainActivity : AppCompatActivity() {
         val completed: TextView = findViewById(R.id.tvCompleted)
         scrollView.visibility = View.GONE
         completed.visibility = View.VISIBLE
-        Toast.makeText(getBaseContext(), "Your resume has been updated", Toast.LENGTH_SHORT ).show();
+        Toast.makeText(getBaseContext(), "Your resume has been saved, you can review your resume at the account page", Toast.LENGTH_LONG ).show()
+//        var fragment: ChatsFragment? = ChatsFragment()
+//        val transaction = supportFragmentManager.beginTransaction()
+//        if (fragment != null) {
+//            transaction.replace(R.id.nav_host_fragment_activity_main, fragment)
+//        }
+//        transaction.commit()
+    }
+
+    inline fun FragmentManager.doTransaction(func: FragmentTransaction.() ->
+    FragmentTransaction) {
+        beginTransaction().func().commit()
     }
 
     /* Save button Account page */
