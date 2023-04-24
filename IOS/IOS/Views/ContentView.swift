@@ -6,16 +6,34 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct ContentView: View {
+    @State var isPresentingScanner = false
+    @State var scannerCode: String = "Scan a code to get started."
+    
+    var scannerSheet : some View {
+        CodeScannerView(
+            codeTypes: [.qr, .code128], // Can add more types to array to be able to scan different type of codes
+            completion: { result in
+                if case let .success(code) = result {
+                    self.scannerCode = code.string
+                    self.isPresentingScanner = false
+                }
+            }
+        )
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack(spacing: 10) {
+            Text(scannerCode)
+            Button("Scan a code") {
+                self.isPresentingScanner = true
+            }
+            .sheet(isPresented: $isPresentingScanner) {
+                self.scannerSheet
+            }
         }
-        .padding()
     }
 }
 
