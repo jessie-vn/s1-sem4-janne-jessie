@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
+import PopupView
 
 @main
 struct IOSApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+            WindowGroup(content: ContentView().implementPopupView)
     }
 }

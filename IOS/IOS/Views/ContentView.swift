@@ -19,6 +19,7 @@ struct ContentView: View {
                 if case let .success(code) = result {
                     self.scannerCode = code.string
                     self.isPresentingScanner = false
+                    PopUpView(scannerCode: $scannerCode).present()
                 }
             }
         )
