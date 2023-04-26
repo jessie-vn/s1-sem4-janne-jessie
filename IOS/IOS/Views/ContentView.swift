@@ -26,7 +26,45 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 10) {
+            TitleBarView()
+            Divider()
+            VStack {
+                ScrollView {
+                    CartViewInline(
+                        title: "Want to know more?",
+                        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    )
+                    CartViewBlock(charts:
+                        [
+                            Chart(
+                                title: "Want to know more?",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "Want to know more?",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "Want to know more?",
+                                content: "logo"
+                            )
+
+                        ]
+                    )
+                    CartViewInline(
+                        title: "Want to know more?",
+                        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    )
+                }
+            }
+            .padding(30)
+            
+            Spacer()
+            Divider()
+            
             Text(scannerCode)
+                .fontWeight(.bold)
+                .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
             Button("Scan a code") {
                 self.isPresentingScanner = true
             }
@@ -34,6 +72,8 @@ struct ContentView: View {
                 self.scannerSheet
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.white)
     }
 }
 
