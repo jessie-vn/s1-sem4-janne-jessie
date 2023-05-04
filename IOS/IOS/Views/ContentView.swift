@@ -30,22 +30,32 @@ struct ContentView: View {
             Divider()
             VStack {
                 ScrollView {
-                    CartViewInline(
-                        title: "Want to know more?",
-                        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    )
-                    CartViewBlock(charts:
+                    CartViewBlock(
+                        title: "Your previous scans:",
+                        charts:
                         [
                             Chart(
-                                title: "Want to know more?",
+                                title: "",
                                 content: "logo"
                             ),
                             Chart(
-                                title: "Want to know more?",
+                                title: "",
                                 content: "logo"
                             ),
                             Chart(
-                                title: "Want to know more?",
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
                                 content: "logo"
                             )
 
@@ -53,7 +63,38 @@ struct ContentView: View {
                     )
                     CartViewInline(
                         title: "Want to know more?",
-                        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    )
+                    CartViewBlock(
+                        title: "These products might interest you:",
+                        charts:
+                        [
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            ),
+                            Chart(
+                                title: "",
+                                content: "logo"
+                            )
+
+                        ]
                     )
                 }
             }
@@ -68,6 +109,16 @@ struct ContentView: View {
             Button("Scan a code") {
                 self.isPresentingScanner = true
             }
+//            .buttonStyle(.borderedProminent)
+            .padding(9)
+            .foregroundColor(.white)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 15,
+                    style: .continuous
+                )
+                .fill(Color(red: 0.62, green: 0.908, blue: 0.754))
+            )
             .sheet(isPresented: $isPresentingScanner) {
                 self.scannerSheet
             }

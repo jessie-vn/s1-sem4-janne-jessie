@@ -8,25 +8,36 @@
 import SwiftUI
 
 struct CartViewBlock: View {
+    var title: String
     var charts: [Chart]
     var body: some View {
-        HStack {
-            ForEach(charts) { chart in
-                VStack {
-                    Text(chart.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
-                        .font(.system(size: 20))
-                    Image(chart.content)
-                        /*.padding(10)
-                        .background(Color(red: 0.62, green: 0.908, blue: 0.754))
-                        .foregroundColor(.white)
-                        .cornerRadius(20)*/
-                        .resizable()
-                        .frame(width: 75, height: 75)
+        VStack(alignment: .leading) {
+            Text(title)
+                .fontWeight(.bold)
+                .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                .font(.system(size: 20))
+                .padding(.bottom, 5)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(charts) { chart in
+                        VStack {
+                            Text(chart.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                                .font(.system(size: 15))
+                            Image(chart.content)
+                            /*.padding(10)
+                             .background(Color(red: 0.62, green: 0.908, blue: 0.754))
+                             .foregroundColor(.white)
+                             .cornerRadius(20)*/
+                                .resizable()
+                                .frame(width: 75, height: 75)
+                        }
+                    }
                 }
             }
-            .frame(maxWidth: 150)
+            //.frame(maxWidth: 150)
+            .padding(.bottom, 30)
         }
     }
 }
@@ -44,6 +55,7 @@ class Chart: Identifiable {
 struct CartViewBlock_Previews: PreviewProvider {
     static var previews: some View {
         CartViewBlock(
+            title: "",
             charts: [Chart]()
         )
     }
