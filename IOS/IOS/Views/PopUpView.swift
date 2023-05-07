@@ -20,13 +20,23 @@ struct PopUpView: BottomPopup {
                 Button(action: dismiss) {
                     Image(systemName: "xmark.circle.fill")
                         .font(.system(size: 25))
-                        .foregroundColor(Color(.systemGray2))
-                        .background(Color(.systemGray6))
-                        .clipShape(Circle())
+                        .foregroundColor(Color(.systemGray))
                 }
             }
             .padding(.bottom, 5)
             Text("You scanned code: \(scannerCode)").foregroundColor(.black)
+                .padding(.bottom, 20)
+            if scannerCode.hasSuffix("13") {
+                Image("check")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+            } else {
+                Image("cross")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+            }
         }
         .padding(.vertical, 15)
         .padding(.leading, 24)
