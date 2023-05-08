@@ -36,27 +36,27 @@ struct ContentView: View {
                         [
                             Chart(
                                 title: "",
-                                content: "logo"
+                                content: "AH-Appelstroop"
                             ),
                             Chart(
                                 title: "",
-                                content: "logo"
+                                content: "AH-Augurken"
                             ),
                             Chart(
                                 title: "",
-                                content: "logo"
+                                content: "AH-Appelmouse"
                             ),
                             Chart(
                                 title: "",
-                                content: "logo"
+                                content: "AH-KokosMelk"
                             ),
                             Chart(
                                 title: "",
-                                content: "logo"
+                                content: "AH-Ketchup"
                             ),
                             Chart(
                                 title: "",
-                                content: "logo"
+                                content: "AH-Peterselie"
                             )
 
                         ]
