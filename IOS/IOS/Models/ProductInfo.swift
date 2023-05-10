@@ -9,10 +9,10 @@ import Foundation
 
 struct ProductResponse: Decodable {
     let code: String
-    let product: Product
+    let product: ProductInfo
 }
 
-struct Product: Decodable {
+struct ProductInfo: Decodable {
     let _id: String
     let product_name: String
     let ingredients: [Ingredient]?
@@ -51,7 +51,7 @@ struct Ingredient: Decodable {
     }
 }
 
-func fetchProductByCode(code: String) async throws -> Product? {
+func fetchProductByCode(code: String) async throws -> ProductInfo? {
     let url = URL(string: "https://world.openfoodfacts.org/api/v2/product/\(code)")
     
     if(url != nil){

@@ -10,7 +10,7 @@ import PopupView
 
 struct PopUpView: BottomPopup {
     @Binding var scannerCode: String
-    @Binding var product: Product?
+    @Binding var product: ProductInfo?
     let id: String = "your_id"
     
     //TODO: Update layout
@@ -75,7 +75,7 @@ struct PopUpView: BottomPopup {
 
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        let productBinding = Binding<Product?>(
+        let productBinding = Binding<ProductInfo?>(
             get: { nil },
             set: { _ in }
         )

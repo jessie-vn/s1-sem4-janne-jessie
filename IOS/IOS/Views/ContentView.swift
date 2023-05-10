@@ -11,7 +11,7 @@ import CodeScanner
 struct ContentView: View {
     @State var isPresentingScanner = false
     @State var scannerCode: String = "Scan a code to get started."
-    @State var product: Product?
+    @State var product: ProductInfo?
     
     var scannerSheet : some View {
         CodeScannerView(
