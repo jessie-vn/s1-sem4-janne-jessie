@@ -27,7 +27,17 @@ struct PopUpView: BottomPopup {
             .padding(.bottom, 5)
             if let product = product {
                 Text("You scanned \(product.product_name)").foregroundColor(.black)
-                if product.isVegan {
+                if product.isUnknown{
+                    Image("maybe_cross")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .padding(20)
+                    Text("Could not determine for certain whether this product is vegan")
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.center)
+                }
+                else if product.isVegan {
                     Image("check")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -53,8 +63,6 @@ struct PopUpView: BottomPopup {
     }
     func configurePopup(popup: BottomPopupConfig) -> BottomPopupConfig {
         popup
-        //            .horizontalPadding(20)
-        //            .bottomPadding(42)
             .activePopupCornerRadius(25)
     }
 }
