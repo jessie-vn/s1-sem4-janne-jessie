@@ -10,9 +10,10 @@ import PopupView
 
 struct PopUpView: BottomPopup {
     @Binding var scannerCode: String
+    @Binding var product: Product?
     let id: String = "your_id"
     
-    
+    //TODO: Update layout
     func createContent() -> some View {
         VStack(spacing: 0) {
             HStack {
@@ -24,18 +25,24 @@ struct PopUpView: BottomPopup {
                 }
             }
             .padding(.bottom, 5)
-            Text("You scanned code: \(scannerCode)").foregroundColor(.black)
-                .padding(.bottom, 20)
-            if scannerCode.hasSuffix("13") {
-                Image("check")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
-            } else {
-                Image("cross")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
+            //TODO: Add something for when product is not found
+            if let product = product {
+                Text("You scanned \(product.product_name)").foregroundColor(.black)
+                if product.isVegan {
+                    Image("check")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .padding(20)
+                    Text("This product is vegan")
+                } else {
+                    Image("cross")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .padding(20)
+                    Text("This product is **not** vegan")
+                }
             }
         }
         .padding(.vertical, 15)
@@ -44,14 +51,18 @@ struct PopUpView: BottomPopup {
     }
     func configurePopup(popup: BottomPopupConfig) -> BottomPopupConfig {
         popup
-//            .horizontalPadding(20)
-//            .bottomPadding(42)
+        //            .horizontalPadding(20)
+        //            .bottomPadding(42)
             .activePopupCornerRadius(25)
     }
 }
 
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        PopUpView(scannerCode: .constant("code"))
+        let productBinding = Binding<Product?>(
+            get: { nil },
+            set: { _ in }
+        )
+        return PopUpView(scannerCode: .constant("code"), product: productBinding)
     }
 }
