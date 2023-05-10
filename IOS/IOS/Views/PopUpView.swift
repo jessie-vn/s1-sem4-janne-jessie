@@ -25,7 +25,6 @@ struct PopUpView: BottomPopup {
                 }
             }
             .padding(.bottom, 5)
-            //TODO: Add something for when product is not found
             if let product = product {
                 Text("You scanned \(product.product_name)").foregroundColor(.black)
                 if product.isVegan {
@@ -43,6 +42,9 @@ struct PopUpView: BottomPopup {
                         .padding(20)
                     Text("This product is **not** vegan")
                 }
+            }
+            else {
+                Text("This product could not be found")
             }
         }
         .padding(.vertical, 15)

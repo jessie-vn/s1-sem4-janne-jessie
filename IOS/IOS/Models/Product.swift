@@ -45,20 +45,24 @@ struct Product: Decodable {
     }
     
     func fetchProductByCode(code: String) async throws -> Product? {
-        let url = URL(string: "https://world.openfoodfacts.org/api/v2/product/\(code)")!
+        let url = URL(string: "https://world.openfoodfacts.org/api/v2/product/\(code)")
         
-        var request = URLRequest(url: url)
-        request.addValue("VegiScan - iOS - Version 1.0", forHTTPHeaderField: "User-Agent")
-        
-        print("URL request made successfully")
-        let (data, _) = try await URLSession.shared.data(for: request)
-        
-        //TODO: Handle different errors differently
-        do {
-            let decoded = try JSONDecoder().decode(ProductResponse.self, from: data)
-            return decoded.product
-        } catch {
-            print("Error decoding product data: \(error)")
-            return nil
+        if(url != nil){
+            var request = URLRequest(url: url!)
+            request.addValue("VegiScan - iOS - Version 1.0", forHTTPHeaderField: "User-Agent")
+            
+            print("URL request made successfully")
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            
+            //TODO: Handle different errors differently
+            do {
+                let decoded = try JSONDecoder().decode(ProductResponse.self, from: data)
+                return decoded.product
+            } catch {
+                print("Error decoding product data: \(error)")
+                return nil
+            }
         }
+        return nil
     }
