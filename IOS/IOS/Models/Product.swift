@@ -25,6 +25,7 @@ struct Product: Decodable {
         return true
     }
     
+    //TODO: Add different ways to check
     var isVegan: Bool {
         if !isUnknown, let tags = ingredients_analysis_tags, tags.contains("en:vegan") {
             return true

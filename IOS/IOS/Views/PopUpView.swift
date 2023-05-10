@@ -26,7 +26,10 @@ struct PopUpView: BottomPopup {
             }
             .padding(.bottom, 5)
             if let product = product {
-                Text("You scanned \(product.product_name)").foregroundColor(.black)
+                Text("**\(product.product_name)**")
+                        .foregroundColor(.black)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.center)
                 if product.isUnknown{
                     Image("maybe_cross")
                         .resizable()
@@ -51,6 +54,9 @@ struct PopUpView: BottomPopup {
                         .frame(width: 100, height: 100)
                         .padding(20)
                     Text("This product is **not** vegan")
+                }
+                Button("More information"){
+                    
                 }
             }
             else {
