@@ -31,7 +31,7 @@ struct PopUpView: BottomPopup {
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                 if product.isUnknown{
-                    Image("maybe_cross")
+                    Image("vegan-maybe")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 100)
@@ -41,14 +41,14 @@ struct PopUpView: BottomPopup {
                         .multilineTextAlignment(.center)
                 }
                 else if product.isVegan {
-                    Image("check")
+                    Image("vegan-yes")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 100)
                         .padding(20)
                     Text("This product is vegan")
                 } else {
-                    Image("cross")
+                    Image("vegan-no")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 100)
