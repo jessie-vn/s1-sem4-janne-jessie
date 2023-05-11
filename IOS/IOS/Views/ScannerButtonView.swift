@@ -11,20 +11,26 @@ import CodeScanner
 struct ScannerButtonView: View {
     @State var isPresentingScanner = false
     @State var scannerCode: String = ""
+    @State var product: ProductInfo?
     
     var scannerSheet : some View {
-        CodeScannerView(
-            codeTypes: [.qr, .code128, .ean13], // Can add more types to array to be able to scan different type of codes
-            completion: { result in
-                if case let .success(code) = result {
-                    self.scannerCode = code.string
-                    self.isPresentingScanner = false
-                    PopUpView(scannerCode: $scannerCode).dismiss()
-                    PopUpView(scannerCode: $scannerCode).present()
+            CodeScannerView(
+                codeTypes: [.qr, .code128, .ean13], // Can add more types to array to be able to scan different type of codes
+                completion: { result in
+                    if case let .success(code) = result {
+                        self.scannerCode = code.string
+                        self.isPresentingScanner = false
+                        Task{
+                            do{
+                                product = try await fetchProductByCode(code: scannerCode)
+                            }
+                        }
+                        PopUpView(scannerCode: $scannerCode, product: $product).dismiss()
+                        PopUpView(scannerCode: $scannerCode, product: $product).present()
+                    }
                 }
-            }
-        )
-    }
+            )
+        }
     var body: some View {
         Button(action: {
             self.isPresentingScanner = true

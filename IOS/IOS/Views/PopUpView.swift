@@ -10,7 +10,7 @@ import PopupView
 
 struct PopUpView: BottomPopup {
     @Binding var scannerCode: String
-    @State var product: ProductInfo?
+    @Binding var product: ProductInfo?
     @State private var showProductNotFoundMessage = false
     
     //TODO: Update layout
@@ -96,15 +96,9 @@ struct PopUpView: BottomPopup {
             product = nil
             Task {
                 do {
-                    product = try await fetchProductByCode(code: scannerCode)
-                    if product == nil {
-                        print("Product not found")
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            showProductNotFoundMessage = true
-                        }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        showProductNotFoundMessage = true
                     }
-                } catch {
-                    print(error)
                 }
             }
         }
@@ -118,6 +112,7 @@ struct PopUpView: BottomPopup {
 
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        return PopUpView(scannerCode: .constant("code"))
+        let productInfo = Binding<ProductInfo?>(get: { nil }, set: { _ in })
+        return PopUpView(scannerCode: .constant("code"), product: productInfo)
     }
 }
