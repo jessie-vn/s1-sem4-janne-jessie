@@ -12,6 +12,7 @@ struct ScannerButtonView: View {
     @State var isPresentingScanner = false
     @State var scannerCode: String = ""
     @State var product: ProductInfo?
+    @Binding var navigate: Bool
     
     var scannerSheet : some View {
             CodeScannerView(
@@ -25,8 +26,8 @@ struct ScannerButtonView: View {
                                 product = try await fetchProductByCode(code: scannerCode)
                             }
                         }
-                        PopUpView(scannerCode: $scannerCode, product: $product).dismiss()
-                        PopUpView(scannerCode: $scannerCode, product: $product).present()
+                        PopUpView(scannerCode: $scannerCode, product: $product,navigate: $navigate).dismiss()
+                        PopUpView(scannerCode: $scannerCode, product: $product,navigate: $navigate).present()
                     }
                 }
             )
@@ -55,6 +56,6 @@ struct ScannerButtonView: View {
 
 struct ScannerButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScannerButtonView()
+        ScannerButtonView(navigate: .constant(false))
     }
 }

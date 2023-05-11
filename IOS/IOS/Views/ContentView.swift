@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var navigate = false
     
     var hardcodedProducts: [Product] = [
         Product(
@@ -94,6 +95,9 @@ struct ContentView: View {
                     }
                 }
                 .padding(30)
+                NavigationLink("", isActive: $navigate){
+                    DetailsView(product: filteredProductList.last!)
+                }.offset(y: -4800)
                 
                 Spacer()
                 Divider()
@@ -101,7 +105,7 @@ struct ContentView: View {
                 Text("Scan a code to get started.")
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
-                ScannerButtonView()
+                ScannerButtonView(navigate: $navigate)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)

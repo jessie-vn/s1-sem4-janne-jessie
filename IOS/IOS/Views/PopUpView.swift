@@ -12,6 +12,8 @@ struct PopUpView: BottomPopup {
     @Binding var scannerCode: String
     @Binding var product: ProductInfo?
     @State private var showProductNotFoundMessage = false
+    @Binding var navigate: Bool
+    @State var openInfo: Bool = false
     
     //TODO: Update layout
     func createContent() -> some View {
@@ -59,11 +61,13 @@ struct PopUpView: BottomPopup {
                         .padding(.bottom,20)
                 }
                 HStack {
-                    ScannerButtonView()
+                    ScannerButtonView(navigate: $navigate)
                     Spacer()
                     Button(action: {
-                        // More information action
-                    }) {
+                        openInfo = true
+                        dismiss()
+                    }
+                    ) {
                         HStack {
                             Image(systemName: "info.circle")
                             Text("More information")
@@ -82,7 +86,7 @@ struct PopUpView: BottomPopup {
             else if showProductNotFoundMessage{
                 Text("This product could not be found")
                     .padding(.bottom,20)
-                ScannerButtonView()
+                ScannerButtonView(navigate: $navigate)
             }
             else {
                 ProgressView()
@@ -94,12 +98,18 @@ struct PopUpView: BottomPopup {
         .padding(.trailing, 16)
         .onAppear {
             product = nil
+            openInfo = false
             Task {
                 do {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                         showProductNotFoundMessage = true
                     }
                 }
+            }
+        }
+        .onDisappear{
+            if openInfo{
+                self.navigate.toggle()
             }
         }
     }
@@ -113,6 +123,6 @@ struct PopUpView: BottomPopup {
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
         let productInfo = Binding<ProductInfo?>(get: { nil }, set: { _ in })
-        return PopUpView(scannerCode: .constant("code"), product: productInfo)
+        return PopUpView(scannerCode: .constant("code"), product: productInfo, navigate: .constant(false))
     }
 }
