@@ -19,6 +19,7 @@
 		0F8EAA5529F9319100739C4C /* CartViewInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EAA5429F9319100739C4C /* CartViewInline.swift */; };
 		0F8EAA5729F93CB300739C4C /* CartViewBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EAA5629F93CB300739C4C /* CartViewBlock.swift */; };
 		405763012A0BAF05009F8A75 /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405763002A0BAF05009F8A75 /* ProductInfo.swift */; };
+		405763082A0BDDD0009F8A75 /* ScannerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405763072A0BDDD0009F8A75 /* ScannerButtonView.swift */; };
 		40639ED229F92CB100122ECB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EDC0729F667BA00921E06 /* ContentView.swift */; };
 		40639ED329F92CE100122ECB /* IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EDC0529F667BA00921E06 /* IOSApp.swift */; };
 		40639ED529F92D8D00122ECB /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40639ED429F92D8D00122ECB /* PopUpView.swift */; };
@@ -59,6 +60,7 @@
 		0F8EAA5429F9319100739C4C /* CartViewInline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewInline.swift; sourceTree = "<group>"; };
 		0F8EAA5629F93CB300739C4C /* CartViewBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewBlock.swift; sourceTree = "<group>"; };
 		405763002A0BAF05009F8A75 /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
+		405763072A0BDDD0009F8A75 /* ScannerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerButtonView.swift; sourceTree = "<group>"; };
 		40639ED429F92D8D00122ECB /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 				0F8EAA5429F9319100739C4C /* CartViewInline.swift */,
 				0F8EAA5629F93CB300739C4C /* CartViewBlock.swift */,
 				0F31819B2A08EA5B00048ABB /* DetailsView.swift */,
+				405763072A0BDDD0009F8A75 /* ScannerButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				0F8EAA5529F9319100739C4C /* CartViewInline.swift in Sources */,
 				0F31819C2A08EA5B00048ABB /* DetailsView.swift in Sources */,
 				0F31819F2A08EE6500048ABB /* Product.swift in Sources */,
+				405763082A0BDDD0009F8A75 /* ScannerButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

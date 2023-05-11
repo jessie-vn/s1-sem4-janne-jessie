@@ -6,12 +6,8 @@
 //
 
 import SwiftUI
-import CodeScanner
 
 struct ContentView: View {
-    @State var isPresentingScanner = false
-    @State var scannerCode: String = "Scan a code to get started."
-    @State var product: ProductInfo?
     
     var hardcodedProducts: [Product] = [
         Product(
@@ -76,24 +72,6 @@ struct ContentView: View {
             )
         ]
     
-    var scannerSheet : some View {
-        CodeScannerView(
-            codeTypes: [.qr, .code128, .ean13], // Can add more types to array to be able to scan different type of codes
-            completion: { result in
-                if case let .success(code) = result {
-                    self.scannerCode = code.string
-                    self.isPresentingScanner = false
-                    Task{
-                        do{
-                            product = try await fetchProductByCode(code: scannerCode)
-                        }
-                    }
-                    PopUpView(scannerCode: $scannerCode, product: $product).present()
-                }
-            }
-        )
-    }
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
@@ -120,25 +98,10 @@ struct ContentView: View {
                 Spacer()
                 Divider()
                 
-                Text(scannerCode)
+                Text("Scan a code to get started.")
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
-                Button("Scan a code") {
-                    self.isPresentingScanner = true
-                }
-    //            .buttonStyle(.borderedProminent)
-                .padding(9)
-                .foregroundColor(.white)
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: 15,
-                        style: .continuous
-                    )
-                    .fill(Color(red: 0.62, green: 0.908, blue: 0.754))
-                )
-                .sheet(isPresented: $isPresentingScanner) {
-                    self.scannerSheet
-                }
+                ScannerButtonView()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)

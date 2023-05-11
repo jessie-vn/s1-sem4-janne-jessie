@@ -10,8 +10,8 @@ import PopupView
 
 struct PopUpView: BottomPopup {
     @Binding var scannerCode: String
-    @Binding var product: ProductInfo?
-    let id: String = "your_id"
+    @State var product: ProductInfo?
+    @State private var showProductNotFoundMessage = false
     
     //TODO: Update layout
     func createContent() -> some View {
@@ -27,9 +27,9 @@ struct PopUpView: BottomPopup {
             .padding(.bottom, 5)
             if let product = product {
                 Text("**\(product.product_name)**")
-                        .foregroundColor(.black)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.center)
+                    .foregroundColor(.black)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
                 if product.isUnknown{
                     Image("vegan-maybe")
                         .resizable()
@@ -37,6 +37,7 @@ struct PopUpView: BottomPopup {
                         .frame(width: 100, height: 100)
                         .padding(20)
                     Text("Could not determine for certain whether this product is vegan")
+                        .padding(.bottom,20)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                 }
@@ -47,6 +48,7 @@ struct PopUpView: BottomPopup {
                         .frame(width: 100, height: 100)
                         .padding(20)
                     Text("This product is vegan")
+                        .padding(.bottom,20)
                 } else {
                     Image("vegan-no")
                         .resizable()
@@ -54,19 +56,60 @@ struct PopUpView: BottomPopup {
                         .frame(width: 100, height: 100)
                         .padding(20)
                     Text("This product is **not** vegan")
+                        .padding(.bottom,20)
                 }
-                Button("More information"){
-                    
+                HStack {
+                    ScannerButtonView()
+                    Spacer()
+                    Button(action: {
+                        // More information action
+                    }) {
+                        HStack {
+                            Image(systemName: "info.circle")
+                            Text("More information")
+                        }
+                        .frame(width: 160)
+                        .padding(10)
+                        .foregroundColor(.white)
+                        .background(
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .fill(Color(red: 0.62, green: 0.908, blue: 0.754))
+                        )
+                        .padding(.horizontal, 10)
+                    }
                 }
             }
-            else {
+            else if showProductNotFoundMessage{
                 Text("This product could not be found")
+                    .padding(.bottom,20)
+                ScannerButtonView()
+            }
+            else {
+                ProgressView()
+                    .padding(.vertical, 20)
             }
         }
         .padding(.vertical, 15)
         .padding(.leading, 24)
         .padding(.trailing, 16)
+        .onAppear {
+            product = nil
+            Task {
+                do {
+                    product = try await fetchProductByCode(code: scannerCode)
+                    if product == nil {
+                        print("Product not found")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            showProductNotFoundMessage = true
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
+    
     func configurePopup(popup: BottomPopupConfig) -> BottomPopupConfig {
         popup
             .activePopupCornerRadius(25)
@@ -75,10 +118,6 @@ struct PopUpView: BottomPopup {
 
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        let productBinding = Binding<ProductInfo?>(
-            get: { nil },
-            set: { _ in }
-        )
-        return PopUpView(scannerCode: .constant("code"), product: productBinding)
+        return PopUpView(scannerCode: .constant("code"))
     }
 }
