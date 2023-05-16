@@ -119,16 +119,7 @@ struct ContentView: View {
                 Button("Scan a code") {
                     self.isPresentingScanner = true
                 }
-    //            .buttonStyle(.borderedProminent)
-                .padding(9)
-                .foregroundColor(.white)
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: 15,
-                        style: .continuous
-                    )
-                    .fill(Color(red: 0.62, green: 0.908, blue: 0.754))
-                )
+                .buttonStyle(.bordered)
                 .sheet(isPresented: $isPresentingScanner) {
                     self.scannerSheet
                 }
