@@ -31,20 +31,21 @@ struct CartViewBlock: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
                                     .font(.system(size: 15))*/
-                                Image(product.image_front_small_url!)
-                                /*.padding(10)
-                                 .background(Color(red: 0.62, green: 0.908, blue: 0.754))
-                                 .foregroundColor(.white)
-                                 .cornerRadius(20)*/
-                                    .resizable()
-                                    .frame(width: 75, height: 75)
+                                AsyncImage(url: URL(string: product.image_url!)) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(width: 75, height: 75).padding(10)
                             }
                         }
                     }
                 }
             }
             //.frame(maxWidth: 150)
-            .padding(.bottom, 30)
+            .padding(.bottom, 20)
 
         }
     }

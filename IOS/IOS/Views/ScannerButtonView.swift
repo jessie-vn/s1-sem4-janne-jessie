@@ -13,6 +13,7 @@ struct ScannerButtonView: View {
     @State var scannerCode: String = ""
     @State var product: ProductInfo?
     @Binding var navigate: Bool
+    @Binding var scannedProducts: [ProductInfo]
     
     var scannerSheet : some View {
             CodeScannerView(
@@ -24,12 +25,19 @@ struct ScannerButtonView: View {
                         Task{
                             do{
                                 product = try await fetchProductByCode(code: scannerCode)
+                                if(product != nil){
+                                    if let existingProductIndex = scannedProducts.firstIndex(where: { $0.id == product?.id }) {
+                                                // Product already exists in the scannedProducts list, remove it
+                                                scannedProducts.remove(at: existingProductIndex)
+                                            }
+                                    scannedProducts.append(product!)
+                                }
                             }
                         }
-                        PopUpView(scannerCode: $scannerCode, product: $product, navigate: $navigate)
+                        PopUpView(scannerCode: $scannerCode, product: $product, navigate: $navigate, scannedProducts: $scannedProducts)
                             .dismiss()
 
-                        PopUpView(scannerCode: $scannerCode, product: $product, navigate: $navigate)
+                        PopUpView(scannerCode: $scannerCode, product: $product, navigate: $navigate, scannedProducts: $scannedProducts)
                             .present()
                     }
                 }
@@ -59,6 +67,6 @@ struct ScannerButtonView: View {
 
 struct ScannerButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScannerButtonView(navigate: .constant(false))
+        ScannerButtonView(navigate: .constant(false), scannedProducts: .constant([]))
     }
 }

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State var navigate = false
+    @State var scannedProducts: [ProductInfo] = []
     
-    var hardcodedProducts: [ProductInfo] = [
+//    var hardcodedProducts: [ProductInfo] = [
 //        ProductInfo(
 //            image: "AH-Appelstroop",
 //            title: "AH Appelstroop",
@@ -32,20 +33,20 @@ struct ContentView: View {
 //            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 //            code: "3"
 //        ),
-        ProductInfo(
-            _id: "4",
-            product_name: "AH Kokosmelk",
-            ingredients: nil,
-            ingredients_analysis_tags: ["en:vegan"],
-            image_front_small_url: "AH-KokosMelk", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
-        ),
-        ProductInfo(
-            _id: "5",
-            product_name: "AH Ketchup",
-            ingredients: nil,
-            ingredients_analysis_tags: ["en:vegan"],
-            image_front_small_url: "AH-Ketchup", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
-            )
+//        ProductInfo(
+//            _id: "4",
+//            product_name: "AH Kokosmelk",
+//            ingredients: nil,
+//            ingredients_analysis_tags: ["en:vegan"],
+//            image_url: "AH-KokosMelk", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
+//        ),
+//        ProductInfo(
+//            _id: "5",
+//            product_name: "AH Ketchup",
+//            ingredients: nil,
+//            ingredients_analysis_tags: ["en:vegan"],
+//            image_url: "AH-Ketchup", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
+//            )
 //        ),
 //        ProductInfo(
 //            image: "AH-Peterselie",
@@ -54,7 +55,7 @@ struct ContentView: View {
 //            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 //            code: "6"
 //        )
-    ]
+//    ]
 
     var filteredProductList: [ProductInfo] =
         [
@@ -63,14 +64,14 @@ struct ContentView: View {
                 product_name: "AH Kokosmelk",
                 ingredients: nil,
                 ingredients_analysis_tags: ["en:vegan"],
-                image_front_small_url: "AH-KokosMelk", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
+                image_url: "AH-KokosMelk", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
             ),
             ProductInfo(
                 _id: "5",
                 product_name: "AH Ketchup",
                 ingredients: nil,
                 ingredients_analysis_tags: ["en:vegan"],
-                image_front_small_url: "AH-Ketchup", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
+                image_url: "AH-Ketchup", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
             )
         ]
     
@@ -83,7 +84,7 @@ struct ContentView: View {
                     ScrollView {
                         CartViewBlock(
                             title: "Your previous scans:",
-                            products: hardcodedProducts
+                            products: scannedProducts.reversed()
                         )
                         CartViewInline(
                             title: "Want to know more?",
@@ -97,7 +98,9 @@ struct ContentView: View {
                 }
                 .padding(30)
                 NavigationLink("", isActive: $navigate){
-                        DetailsView(product: filteredProductList.last!)
+                    if(!scannedProducts.isEmpty){
+                        DetailsView(product: scannedProducts.last!)
+                    }
                 }.offset(y: -4800)
                 
                 Spacer()
@@ -106,7 +109,7 @@ struct ContentView: View {
                 Text("Scan a code to get started.")
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
-                ScannerButtonView(navigate: $navigate)
+                ScannerButtonView(navigate: $navigate, scannedProducts: $scannedProducts)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)

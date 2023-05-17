@@ -14,6 +14,7 @@ struct PopUpView: BottomPopup {
     @State private var showProductNotFoundMessage = false
     @Binding var navigate: Bool
     @State var openInfo: Bool = false
+    @Binding var scannedProducts: [ProductInfo]
     
     //TODO: Update layout
     func createContent() -> some View {
@@ -61,7 +62,7 @@ struct PopUpView: BottomPopup {
                         .padding(.bottom,20)
                 }
                 HStack {
-                    ScannerButtonView(navigate: $navigate)
+                    ScannerButtonView(navigate: $navigate, scannedProducts: $scannedProducts)
                     Spacer()
                     Button(action: {
                         openInfo = true
@@ -86,7 +87,7 @@ struct PopUpView: BottomPopup {
             else if showProductNotFoundMessage{
                 Text("This product could not be found")
                     .padding(.bottom,20)
-                ScannerButtonView(navigate: $navigate)
+                ScannerButtonView(navigate: $navigate, scannedProducts: $scannedProducts)
             }
             else {
                 ProgressView()
@@ -123,6 +124,6 @@ struct PopUpView: BottomPopup {
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
         let productInfo = Binding<ProductInfo?>(get: { nil }, set: { _ in })
-        return PopUpView(scannerCode: .constant("code"), product: productInfo, navigate: .constant(false))
+        return PopUpView(scannerCode: .constant("code"), product: productInfo, navigate: .constant(false), scannedProducts: .constant([]))
     }
 }

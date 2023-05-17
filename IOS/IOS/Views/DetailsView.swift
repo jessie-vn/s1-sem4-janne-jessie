@@ -12,7 +12,7 @@ struct DetailsView: View {
     var body: some View {
         VStack(spacing: 10) {
             ScrollView {
-                AsyncImage(url: URL(string: product.image_front_small_url!))
+                AsyncImage(url: URL(string: product.image_url!))
 //                        .resizable()
                         .frame(width: 400, height: 400)
 //                        .padding(.bottom, 30)
@@ -62,7 +62,7 @@ struct DetailsView: View {
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
         DetailsView(
-            product: ProductInfo(_id: "1", product_name: "title", ingredients: nil, ingredients_analysis_tags: ["en:non-vegan"], image_front_small_url: "AH-Appelstroop", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil)
+            product: ProductInfo(_id: "1", product_name: "title", ingredients: nil, ingredients_analysis_tags: ["en:non-vegan"], image_url: "AH-Appelstroop", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil)
         )
     }
 }

@@ -17,7 +17,7 @@ struct ProductInfo: Decodable, Identifiable {
     let product_name: String
     let ingredients: [Ingredient]?
     let ingredients_analysis_tags: [String]?
-    let image_front_small_url: String?
+    let image_url: String?
     let description: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     let origin: String?
     let manufacturing_places: String?
