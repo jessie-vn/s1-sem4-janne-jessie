@@ -26,8 +26,11 @@ struct ScannerButtonView: View {
                                 product = try await fetchProductByCode(code: scannerCode)
                             }
                         }
-                        PopUpView(scannerCode: $scannerCode, product: $product,navigate: $navigate).dismiss()
-                        PopUpView(scannerCode: $scannerCode, product: $product,navigate: $navigate).present()
+                        PopUpView(scannerCode: $scannerCode, product: $product, navigate: $navigate)
+                            .dismiss()
+
+                        PopUpView(scannerCode: $scannerCode, product: $product, navigate: $navigate)
+                            .present()
                     }
                 }
             )

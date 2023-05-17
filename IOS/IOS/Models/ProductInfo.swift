@@ -9,14 +9,25 @@ import Foundation
 
 struct ProductResponse: Decodable {
     let code: String
-    let product: ProductInfo
+    let product: ProductInfo?
 }
 
-struct ProductInfo: Decodable {
+struct ProductInfo: Decodable, Identifiable {
     let _id: String
     let product_name: String
     let ingredients: [Ingredient]?
     let ingredients_analysis_tags: [String]?
+    let image_front_small_url: String?
+    let description: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    let origin: String?
+    let manufacturing_places: String?
+    let energy_value: String?
+    let nutriments: Nutriments?
+    
+    
+    var id: String {
+            return _id
+        }
     
     var isUnknown: Bool {
         if let tags = ingredients_analysis_tags, tags.contains("en:vegan") || tags.contains("en:non-vegan") {
@@ -34,7 +45,6 @@ struct ProductInfo: Decodable {
     }
 }
 
-
 struct Ingredient: Decodable {
     let id: String
     let text: String
@@ -49,6 +59,15 @@ struct Ingredient: Decodable {
     var isVegetarian: Bool {
         return vegetarian == "yes"
     }
+}
+
+struct Nutriments: Decodable {
+    let vitamin_b12: Double?
+    let iron: Double?
+    let calcium: Double?
+    let fibre: Double?
+    let fat: Double?
+    let sugars: Double?
 }
 
 func fetchProductByCode(code: String) async throws -> ProductInfo? {

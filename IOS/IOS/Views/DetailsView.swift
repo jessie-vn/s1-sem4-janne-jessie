@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct DetailsView: View {
-    var product: Product
+    var product: ProductInfo
     var body: some View {
         VStack(spacing: 10) {
             ScrollView {
-                    Image(product.image)
-                        .resizable()
+                AsyncImage(url: URL(string: product.image_front_small_url!))
+//                        .resizable()
                         .frame(width: 400, height: 400)
-                        .padding(.bottom, 30)
+//                        .padding(.bottom, 30)
                     
                     //Divider()
                     
-                    Text(product.title)
+                    Text(product.product_name)
                         .fontWeight(.bold)
                         .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
                         .font(.system(size: 25))
-                    Text(product.code)
+                    Text(product._id)
                         .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
                         .font(.system(size: 15))
                         .padding(.bottom, 5)
                     
                     HStack {
-                        if (product.vegan) {
+                        if (product.isVegan) {
                             Image("vegan-yes")
                                 .resizable()
                                 .frame(width: 30, height: 30)
@@ -62,7 +62,7 @@ struct DetailsView: View {
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
         DetailsView(
-            product: Product(image: "AH-Appelstroop", title: "title", vegan: false, description: "description", code: "1")
+            product: ProductInfo(_id: "1", product_name: "title", ingredients: nil, ingredients_analysis_tags: ["en:non-vegan"], image_front_small_url: "AH-Appelstroop", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil)
         )
     }
 }

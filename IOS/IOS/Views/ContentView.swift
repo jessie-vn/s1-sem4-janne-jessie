@@ -10,66 +10,67 @@ import SwiftUI
 struct ContentView: View {
     @State var navigate = false
     
-    var hardcodedProducts: [Product] = [
-        Product(
-            image: "AH-Appelstroop",
-            title: "AH Appelstroop",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "1"
+    var hardcodedProducts: [ProductInfo] = [
+//        ProductInfo(
+//            image: "AH-Appelstroop",
+//            title: "AH Appelstroop",
+//            vegan: false,
+//            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//            code: "1"
+//        ),
+//        ProductInfo(
+//            image: "AH-Augurken",
+//            title: "AH Augurken",
+//            vegan: false,
+//            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//            code: "2"
+//        ),
+//        ProductInfo(
+//            image: "AH-Appelmouse",
+//            title: "AH Appelmouse",
+//            vegan: false,
+//            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//            code: "3"
+//        ),
+        ProductInfo(
+            _id: "4",
+            product_name: "AH Kokosmelk",
+            ingredients: nil,
+            ingredients_analysis_tags: ["en:vegan"],
+            image_front_small_url: "AH-KokosMelk", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
         ),
-        Product(
-            image: "AH-Augurken",
-            title: "AH Augurken",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "2"
-        ),
-        Product(
-            image: "AH-Appelmouse",
-            title: "AH Appelmouse",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "3"
-        ),
-        Product(
-            image: "AH-KokosMelk",
-            title: "AH Kokosmelk",
-            vegan: true,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "4"
-        ),
-        Product(
-            image: "AH-Ketchup",
-            title: "AH Ketchup",
-            vegan: true,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "5"
-        ),
-        Product(
-            image: "AH-Peterselie",
-            title: "AH Peterselie",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "6"
-        )
+        ProductInfo(
+            _id: "5",
+            product_name: "AH Ketchup",
+            ingredients: nil,
+            ingredients_analysis_tags: ["en:vegan"],
+            image_front_small_url: "AH-Ketchup", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
+            )
+//        ),
+//        ProductInfo(
+//            image: "AH-Peterselie",
+//            title: "AH Peterselie",
+//            vegan: false,
+//            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//            code: "6"
+//        )
     ]
-    
-    var filteredProductList: [Product] =
+
+    var filteredProductList: [ProductInfo] =
         [
-            Product(
-                image: "AH-KokosMelk",
-                title: "AH Kokosmelk",
-                vegan: true,
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                code: "4"
+            ProductInfo(
+                _id: "4",
+                product_name: "AH Kokosmelk",
+                ingredients: nil,
+                ingredients_analysis_tags: ["en:vegan"],
+                image_front_small_url: "AH-KokosMelk", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
             ),
-            Product(
-                image: "AH-Ketchup",
-                title: "AH Ketchup",
-                vegan: true,
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                code: "5"
+            ProductInfo(
+                _id: "5",
+                product_name: "AH Ketchup",
+                ingredients: nil,
+                ingredients_analysis_tags: ["en:vegan"],
+                image_front_small_url: "AH-Ketchup", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
             )
         ]
     
@@ -96,7 +97,7 @@ struct ContentView: View {
                 }
                 .padding(30)
                 NavigationLink("", isActive: $navigate){
-                    DetailsView(product: filteredProductList.last!)
+                        DetailsView(product: filteredProductList.last!)
                 }.offset(y: -4800)
                 
                 Spacer()
