@@ -33,6 +33,7 @@ struct PopUpView: BottomPopup {
                     .foregroundColor(.black)
                     .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
+                    .font(.system(size: 20))
                 if product.isUnknown{
                     Image("vegan-maybe")
                         .resizable()
@@ -43,6 +44,8 @@ struct PopUpView: BottomPopup {
                         .padding(.bottom,20)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(red: 0.984313725490196, green: 0.5490196078431373, blue: 0))
                 }
                 else if product.isVegan {
                     Image("vegan-yes")
@@ -52,6 +55,8 @@ struct PopUpView: BottomPopup {
                         .padding(20)
                     Text("This product is vegan")
                         .padding(.bottom,20)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(red: 0.006, green: 0.498, blue: -0.002))
                 } else {
                     Image("vegan-no")
                         .resizable()
@@ -60,6 +65,8 @@ struct PopUpView: BottomPopup {
                         .padding(20)
                     Text("This product is **not** vegan")
                         .padding(.bottom,20)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(red: 0.88, green: 0.271, blue: 0.273))
                 }
                 HStack {
                     ScannerButtonView(navigate: $navigate, scannedProducts: $scannedProducts)
