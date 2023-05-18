@@ -6,93 +6,30 @@
 //
 
 import SwiftUI
-import CodeScanner
 
 struct ContentView: View {
-    @State var isPresentingScanner = false
-    @State var scannerCode: String = "Scan a code to get started"
-    
-    var hardcodedProducts: [Product] = [
-        Product(
-            image: "AH-Appelstroop",
-            title: "AH Appelstroop",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "1"
-        ),
-        Product(
-            image: "AH-Augurken",
-            title: "AH Augurken",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "2"
-        ),
-        Product(
-            image: "AH-Appelmouse",
-            title: "AH Appelmouse",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "3"
-        ),
-        Product(
-            image: "AH-KokosMelk",
-            title: "AH Kokosmelk",
-            vegan: true,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "4"
-        ),
-        Product(
-            image: "AH-Ketchup",
-            title: "AH Ketchup",
-            vegan: true,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "5"
-        ),
-        Product(
-            image: "AH-Peterselie",
-            title: "AH Peterselie",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "6"
-        ),
-        Product(
-            image: "AH-PopcornMais",
-            title: "AH Popcorn Mais",
-            vegan: false,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            code: "7"
-        )
-    ]
-    
-    var filteredProductList: [Product] =
+    @State var navigate = false
+    @State var scannedProducts: [ProductInfo] = []
+
+    var filteredProductList: [ProductInfo] =
         [
-            Product(
-                image: "AH-KokosMelk",
-                title: "AH Kokosmelk",
-                vegan: true,
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                code: "4"
+            ProductInfo(
+                _id: "4",
+                product_name: "AH Kokosmelk",
+                ingredients: nil,
+                ingredients_text: "Milk",
+                ingredients_analysis_tags: ["en:vegan"],
+                image_url: "https://static.ah.nl/dam/product/AHI_43545239363435353832?revLabel=1&rendition=800x800_JPG_Q90&fileType=binary", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
             ),
-            Product(
-                image: "AH-Ketchup",
-                title: "AH Ketchup",
-                vegan: true,
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                code: "5"
+            ProductInfo(
+                _id: "5",
+                product_name: "AH Ketchup",
+                ingredients: nil,
+                ingredients_text: "Ingredients unknown",
+                ingredients_analysis_tags: ["en:vegan"],
+                image_url: "https://static.ah.nl/dam/product/AHI_43545239383735303938?revLabel=2&rendition=800x800_JPG_Q90&fileType=binary", origin: "", manufacturing_places: "", energy_value: "", nutriments: nil
             )
         ]
-    
-    var scannerSheet : some View {
-        CodeScannerView(
-            codeTypes: [.qr, .code128], // Can add more types to array to be able to scan different type of codes
-            completion: { result in
-                if case let .success(code) = result {
-                    self.scannerCode = code.string
-                    self.isPresentingScanner = false
-                }
-            }
-        )
-    }
     
     var body: some View {
         NavigationView {
@@ -103,7 +40,7 @@ struct ContentView: View {
                     ScrollView {
                         CartViewBlock(
                             title: "Your previous scans:",
-                            products: hardcodedProducts
+                            products: scannedProducts.reversed()
                         )
                         CartViewInline(
                             title: "Want to know more?",
@@ -116,20 +53,19 @@ struct ContentView: View {
                     }
                 }
                 .padding(30)
+                NavigationLink("", isActive: $navigate){
+                    if(!scannedProducts.isEmpty){
+                        DetailsView(product: scannedProducts.last!)
+                    }
+                }.offset(y: -4800)
                 
                 Spacer()
                 Divider()
                 
-                Text(scannerCode)
+                Text("Scan a code to get started.")
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
-                Button("Scan a code") {
-                    self.isPresentingScanner = true
-                }
-                .buttonStyle(.bordered)
-                .sheet(isPresented: $isPresentingScanner) {
-                    self.scannerSheet
-                }
+                ScannerButtonView(navigate: $navigate, scannedProducts: $scannedProducts)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
