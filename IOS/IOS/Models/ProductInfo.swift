@@ -70,6 +70,7 @@ struct Nutriments: Decodable {
     let fat: Double?
     let sugars: Double?
     let carbohydrates: Double?
+    let net_weight_value: Double?
 }
 
 func fetchProductByCode(code: String) async throws -> ProductInfo? {

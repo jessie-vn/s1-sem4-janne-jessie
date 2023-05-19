@@ -56,7 +56,7 @@ struct ScannerButtonView: View {
             .foregroundColor(.white)
             .background(
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .fill(Color(red: 0.62, green: 0.908, blue: 0.754))
+                    .fill(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
             )
             .padding(.horizontal, 10)
         }

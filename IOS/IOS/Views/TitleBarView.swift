@@ -16,7 +16,7 @@ struct TitleBarView: View {
             Text("VegiScan")
                 .font(.system(size: 30))
                 .fontWeight(.bold)
-                .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
         }
     }
 }
