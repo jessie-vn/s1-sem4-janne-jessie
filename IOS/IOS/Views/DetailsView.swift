@@ -43,10 +43,10 @@ struct DetailsView: View {
                 
                 Text(product.product_name)
                     .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                    .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                     .font(.system(size: 25))
                 Text(product._id)
-                    .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                    .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                     .font(.system(size: 15))
                     .padding(.bottom, 5)
                 
@@ -74,24 +74,24 @@ struct DetailsView: View {
                 
                 Text("Product backstory")
                     .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                    .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                 Text(product.description)
-                    .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                    .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                     .multilineTextAlignment(.center)
                     .padding()
                 
                 Text("Ingredient list")
                     .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                    .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                 if (product.ingredients_text == nil) {
                     Text("Ingredients unknown")
-                        .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                        .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                         .multilineTextAlignment(.center)
                         .padding()
                 }
                 else{
                     Text(product.ingredients_text!)
-                        .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                        .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                         .multilineTextAlignment(.center)
                         .padding()
                 }
@@ -101,9 +101,9 @@ struct DetailsView: View {
 //                            .fontWeight(.bold)
 //                            .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
 //                            .padding()
-                        if hovered == 0 { Text("Contains").foregroundColor(.black).padding() }
-                        else if hovered == 1 { Text("Daily Need (%)").foregroundColor(.black).padding() }
-                        else { Text("Weight Procentage (%)").foregroundColor(.black).padding() }
+                        if hovered == 0 { Text("Contains").foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941)).fontWeight(.bold).padding() }
+                        else if hovered == 1 { Text("Daily Need (%)").foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941)).fontWeight(.bold).padding() }
+                        else { Text("Weight Procentage (%)").foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941)).fontWeight(.bold).padding() }
                         Spacer()
                         Button("Toggle") {
                             hovered += 1

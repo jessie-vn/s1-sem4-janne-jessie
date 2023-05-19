@@ -64,7 +64,7 @@ struct ContentView: View {
                 
                 Text("Scan a code to get started.")
                     .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                    .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                 ScannerButtonView(navigate: $navigate, scannedProducts: $scannedProducts)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
