@@ -10,15 +10,6 @@ import SwiftUI
 struct DetailsView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
     @State private var hovered = 0
-    var nutriments: [Nutriment] = [
-        Nutriment(title: "Energy", value: "435 KJ (102 kcal)"),
-        Nutriment(title: "Sugar", value: "22,5 g", weightProcentage: "3%"),
-        Nutriment(title: "Calories", value: "45,3 g"),
-        Nutriment(title: "Fat", value: "0.1 g", weightProcentage: "33%"),
-        Nutriment(title: "High proteins", value: "No"),
-        Nutriment(title: "Vitamines", value: "B12", dailyNeed: "57%"),
-        Nutriment(title: "Vitamines", value: "B2", dailyNeed: "32%")
-    ] // Hardcoded for now
     var product: ProductInfo
     var body: some View {
         VStack(spacing: 10) {
@@ -87,62 +78,100 @@ struct DetailsView: View {
                         .padding()
                 }
                 
-                HStack {
-                    Text("Nutritional values")
-                        .fontWeight(.bold)
-                        .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+                ScrollView {
+                    HStack {
+//                        Text("Nutritional values")
+//                            .fontWeight(.bold)
+//                            .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
+//                            .padding()
+                        if hovered == 0 { Text("Values").foregroundColor(.black).padding() }
+                        else if hovered == 1 { Text("Daily Need (%)").foregroundColor(.black).padding() }
+                        else { Text("Weight Procentage (%)").foregroundColor(.black).padding() }
+                        Spacer()
+                        Button("Toggle") {
+                            hovered += 1
+                            if hovered > 2 {
+                                hovered = 0
+                            }
+                        }
+                        .buttonStyle(.bordered)
                         .padding()
-                    Spacer()
-                    Button("Toggle") {
-                        hovered += 1
-                        if hovered > 2 {
-                            hovered = 0
-                        }
                     }
-                    .buttonStyle(.bordered)
-                    .padding()
-                }
-                Table(nutriments) {
-                    TableColumn("Nutriments") { nutriment in
-                        HStack {
-                            if hovered == 1 {
+                    
+                    Table(of: Nutriment.self) {
+                        TableColumn("Nutriment") { nutriment in
+                            HStack {
                                 Text(nutriment.title)
                                 Spacer()
                                 if sizeClass == .compact {
-                                    Text(nutriment.dailyNeed)
-                                        .font(.caption2)
-                                        .textCase(.uppercase)
-                                }
-                            }
-                            else if hovered == 0 {
-                                Text(nutriment.title)
-                                Spacer()
-                                if sizeClass == .compact {
-                                    Text(nutriment.value)
-                                        .font(.caption2)
-                                        .textCase(.uppercase)
-                                }
-                            }
-                            else {
-                                Text(nutriment.title)
-                                Spacer()
-                                if sizeClass == .compact {
-                                    Text(nutriment.weightProcentage)
-                                        .font(.caption2)
-                                        .textCase(.uppercase)
+                                    if hovered == 0 {
+                                        Text(nutriment.value)
+                                            .font(.caption2)
+                                            .textCase(.uppercase)
+                                    }
+                                    else if hovered == 1 {
+                                        Text(nutriment.dailyNeed)
+                                            .font(.caption2)
+                                            .textCase(.uppercase)
+                                    }
+                                    else {
+                                        Text(nutriment.weightProcentage)
+                                            .font(.caption2)
+                                            .textCase(.uppercase)
+                                    }
                                 }
                             }
                         }
+                        TableColumn("Value") { nutriment in
+                            Text(nutriment.value)
+                        }
+                        TableColumn("Weight Procentage (%)") { nutriment in
+                            Text(nutriment.weightProcentage)
+                        }
+                        TableColumn("Daily Need (%)") { nutriment in
+                            Text(nutriment.dailyNeed)
+                        }
+                    } rows: {
+                        if (product.nutriments?.vitamin_b12 != nil) {
+                            TableRow(Nutriment(
+                                title: "Vitimine B12",
+                                value: String((product.nutriments?.vitamin_b12)!),
+                                dailyNeed: String(round((((product.nutriments?.vitamin_b12)! / 5) * 100) * 10) / 10) + "%")) }
+                        if (product.nutriments?.iron != nil) {
+                            TableRow(Nutriment(
+                                title: "Iron",
+                                value: String((product.nutriments?.iron)!),
+                                dailyNeed: String(round((((product.nutriments?.iron)! / 18) * 100) * 10) / 10) + "%")) }
+                        if (product.nutriments?.calcium != nil) {
+                            TableRow(Nutriment(
+                                title: "Calcium",
+                                value: String((product.nutriments?.calcium)!),
+                                dailyNeed: String(round((((product.nutriments?.calcium)! / 1) * 100) * 10) / 10) + "%")) }
+                        if (product.nutriments?.fibre != nil) {
+                            TableRow(Nutriment(
+                                title: "Fibre",
+                                value: String((product.nutriments?.fibre)!),
+                                dailyNeed: String(round((((product.nutriments?.fibre)! / 40) * 100) * 10) / 10) + "%")) }
+                        if (product.nutriments?.fat != nil) {
+                            TableRow(Nutriment(
+                                title: "Fat",
+                                value: String((product.nutriments?.fat)!),
+                                dailyNeed: String(round((((product.nutriments?.fat)! / 56) * 100) * 10) / 10) + "%")) }
+                        if (product.nutriments?.sugars != nil) {
+                            TableRow(Nutriment(
+                                title: "Sugars",
+                                value: String((product.nutriments?.sugars)!),
+                                dailyNeed: String(round((((product.nutriments?.sugars)! / 24) * 100) * 10) / 10) + "%")) }
+                        if (product.nutriments?.carbohydrates != nil) {
+                            TableRow(Nutriment(
+                                title: "Carbohydrates",
+                                value: String((product.nutriments?.carbohydrates)!),
+                                dailyNeed: String(round((((product.nutriments?.carbohydrates)! / 275) * 100) * 10 ) / 10) + "%")) }
                     }
-                    TableColumn("Each 100g", value: \.value)
-                    TableColumn("Daily need (%)", value: \.dailyNeed)
-                        .width(50)
-                    TableColumn("Weight procentage (%)", value: \.weightProcentage)
-                        .width(50)
+                    .frame(width: 400, height: 400)
                 }
-                .frame(width: 400, height: 500)
+                .padding()
             }
-            .padding()
         }
         .background(.white)
     }

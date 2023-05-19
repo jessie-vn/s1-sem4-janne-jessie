@@ -30,7 +30,7 @@ class Nutriment: Identifiable {
         self.title = title
         self.value = value
         self.dailyNeed = "-"
-        self.weightProcentage = dailyNeed
+        self.weightProcentage = weightProcentage
     }
     init(title: String, value: String, dailyNeed: String, weightProcentage: String) {
         self.title = title
