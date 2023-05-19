@@ -11,6 +11,24 @@ struct DetailsView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
     @State private var hovered = 0
     var product: ProductInfo
+    
+    private func calculateWeightProcentage(value: Double?, weightProcentage: Double?) -> Double? {
+        if value != nil && weightProcentage != nil {
+            var result = (value)! / (weightProcentage)! * 100
+            result = round(result * 10) / 10
+            return result
+        }
+        return 0
+    }
+    
+    private func calculateDailyNeed(value: Double?, dailyNeed: Double) -> Double? {
+        if value != nil {
+            var result = ((value)! * 100) / dailyNeed
+            result = round(result * 10) / 10
+            return result
+        }
+        return 0
+    }
     var body: some View {
         VStack(spacing: 10) {
             ScrollView {
@@ -78,13 +96,12 @@ struct DetailsView: View {
                         .padding()
                 }
                 
-                ScrollView {
                     HStack {
 //                        Text("Nutritional values")
 //                            .fontWeight(.bold)
 //                            .foregroundColor(Color(red: 0.62, green: 0.908, blue: 0.754))
 //                            .padding()
-                        if hovered == 0 { Text("Values").foregroundColor(.black).padding() }
+                        if hovered == 0 { Text("Contains").foregroundColor(.black).padding() }
                         else if hovered == 1 { Text("Daily Need (%)").foregroundColor(.black).padding() }
                         else { Text("Weight Procentage (%)").foregroundColor(.black).padding() }
                         Spacer()
@@ -133,50 +150,131 @@ struct DetailsView: View {
                         }
                     } rows: {
                         if (product.nutriments?.vitamin_b12 != nil) {
-                            TableRow(Nutriment(
-                                title: "Vitimine B12",
-                                value: String((product.nutriments?.vitamin_b12)!),
-                                dailyNeed: String(round((((product.nutriments?.vitamin_b12)! / 5) * 100) * 10) / 10) + "%")) }
+                            let weightProcentage = calculateWeightProcentage(value: product.nutriments?.vitamin_b12, weightProcentage: product.nutriments?.net_weight_value)
+                            let dailyNeed = calculateDailyNeed(value: product.nutriments?.vitamin_b12, dailyNeed: 5)
+                            if weightProcentage != 0 {
+                                TableRow(Nutriment(
+                                    title: "Vitimine B12",
+                                    value: String((product.nutriments?.vitamin_b12)!),
+                                    dailyNeed: String(dailyNeed!) + "%",
+                                    weightProcentage: String(weightProcentage!) + "%"))
+                            }
+                            else {
+                                TableRow(Nutriment(
+                                    title: "Vitimine B12",
+                                    value: String((product.nutriments?.vitamin_b12)!),
+                                    dailyNeed: String(dailyNeed!) + "%"))
+                            }
+                        }
                         if (product.nutriments?.iron != nil) {
-                            TableRow(Nutriment(
-                                title: "Iron",
-                                value: String((product.nutriments?.iron)!),
-                                dailyNeed: String(round((((product.nutriments?.iron)! / 18) * 100) * 10) / 10) + "%")) }
+                            let dailyNeed = calculateDailyNeed(value: product.nutriments?.iron, dailyNeed: 18)
+                            let weightProcentage = calculateWeightProcentage(value: product.nutriments?.iron, weightProcentage: product.nutriments?.net_weight_value)
+                            if weightProcentage != 0 {
+                                TableRow(Nutriment(
+                                    title: "Iron",
+                                    value: String((product.nutriments?.iron)!),
+                                    dailyNeed: String(dailyNeed!) + "%",
+                                    weightProcentage: String(weightProcentage!) + "%"))
+                            }
+                            else {
+                                TableRow(Nutriment(
+                                    title: "Iron",
+                                    value: String((product.nutriments?.iron)!),
+                                    dailyNeed: String(dailyNeed!) + "%")) }
+                        }
                         if (product.nutriments?.calcium != nil) {
-                            TableRow(Nutriment(
-                                title: "Calcium",
-                                value: String((product.nutriments?.calcium)!),
-                                dailyNeed: String(round((((product.nutriments?.calcium)! / 1) * 100) * 10) / 10) + "%")) }
+                            let dailyNeed = calculateDailyNeed(value: product.nutriments?.calcium, dailyNeed: 5)
+                            let weightProcentage = calculateWeightProcentage(value: product.nutriments?.calcium, weightProcentage: product.nutriments?.net_weight_value)
+                            if weightProcentage != 0 {
+                                TableRow(Nutriment(
+                                    title: "Calcium",
+                                    value: String((product.nutriments?.calcium)!),
+                                    dailyNeed: String(dailyNeed!) + "%",
+                                    weightProcentage: String(weightProcentage!) + "%"))
+                            }
+                            else {
+                                TableRow(Nutriment(
+                                    title: "Calcium",
+                                    value: String((product.nutriments?.calcium)!),
+                                    dailyNeed: String(dailyNeed!) + "%"))
+                            }
+                        }
                         if (product.nutriments?.fibre != nil) {
-                            TableRow(Nutriment(
-                                title: "Fibre",
-                                value: String((product.nutriments?.fibre)!),
-                                dailyNeed: String(round((((product.nutriments?.fibre)! / 40) * 100) * 10) / 10) + "%")) }
+                            let dailyNeed = calculateDailyNeed(value: product.nutriments?.fibre, dailyNeed: 5)
+                            let weightProcentage = calculateWeightProcentage(value: product.nutriments?.fibre, weightProcentage: product.nutriments?.net_weight_value)
+                            if weightProcentage != 0 {
+                                TableRow(Nutriment(
+                                    title: "Fibre",
+                                    value: String((product.nutriments?.fibre)!),
+                                    dailyNeed: String(dailyNeed!) + "%",
+                                    weightProcentage: String(weightProcentage!) + "%"))
+                            }
+                            else {
+                                TableRow(Nutriment(
+                                    title: "Fibre",
+                                    value: String((product.nutriments?.fibre)!),
+                                    dailyNeed: String(dailyNeed!) + "%"))
+                            }
+                        }
                         if (product.nutriments?.fat != nil) {
-                            TableRow(Nutriment(
-                                title: "Fat",
-                                value: String((product.nutriments?.fat)!),
-                                dailyNeed: String(round((((product.nutriments?.fat)! / 56) * 100) * 10) / 10) + "%")) }
+                            let dailyNeed = calculateDailyNeed(value: product.nutriments?.fat, dailyNeed: 5)
+                            let weightProcentage = calculateWeightProcentage(value: product.nutriments?.fat, weightProcentage: product.nutriments?.net_weight_value)
+                            if weightProcentage != 0 {
+                                TableRow(Nutriment(
+                                    title: "Fat",
+                                    value: String((product.nutriments?.fat)!),
+                                    dailyNeed: String(dailyNeed!) + "%",
+                                    weightProcentage: String(weightProcentage!) + "%"))
+                            }
+                            else {
+                                TableRow(Nutriment(
+                                    title: "Fat",
+                                    value: String((product.nutriments?.fat)!),
+                                    dailyNeed: String(dailyNeed!) + "%"))
+                            }
+                        }
                         if (product.nutriments?.sugars != nil) {
-                            TableRow(Nutriment(
-                                title: "Sugars",
-                                value: String((product.nutriments?.sugars)!),
-                                dailyNeed: String(round((((product.nutriments?.sugars)! / 24) * 100) * 10) / 10) + "%")) }
+                            let dailyNeed = calculateDailyNeed(value: product.nutriments?.sugars, dailyNeed: 5)
+                            let weightProcentage = calculateWeightProcentage(value: product.nutriments?.sugars, weightProcentage: product.nutriments?.net_weight_value)
+                            if weightProcentage != 0 {
+                                TableRow(Nutriment(
+                                    title: "Sugars",
+                                    value: String((product.nutriments?.sugars)!),
+                                    dailyNeed: String(dailyNeed!) + "%",
+                                    weightProcentage: String(weightProcentage!) + "%"))
+                            }
+                            else {
+                                TableRow(Nutriment(
+                                    title: "Sugars",
+                                    value: String((product.nutriments?.sugars)!),
+                                    dailyNeed: String(dailyNeed!) + "%"))
+                            }
+                        }
                         if (product.nutriments?.carbohydrates != nil) {
-                            TableRow(Nutriment(
-                                title: "Carbohydrates",
-                                value: String((product.nutriments?.carbohydrates)!),
-                                dailyNeed: String(round((((product.nutriments?.carbohydrates)! / 275) * 100) * 10 ) / 10) + "%")) }
+                            let dailyNeed = calculateDailyNeed(value: product.nutriments?.carbohydrates, dailyNeed: 5)
+                            let weightProcentage = calculateWeightProcentage(value: product.nutriments?.carbohydrates, weightProcentage: product.nutriments?.net_weight_value)
+                            if weightProcentage != 0 {
+                                TableRow(Nutriment(
+                                    title: "Carbohydrates",
+                                    value: String((product.nutriments?.carbohydrates)!),
+                                    dailyNeed: String(dailyNeed!) + "%",
+                                    weightProcentage: String(weightProcentage!) + "%"))
+                            }
+                            else {
+                                TableRow(Nutriment(
+                                    title: "Carbohydrates",
+                                    value: String((product.nutriments?.carbohydrates)!),
+                                    dailyNeed: String(dailyNeed!) + "%"))
+                            }
+                        }
                     }
                     .frame(width: 400, height: 400)
                 }
                 .padding()
-            }
         }
         .background(.white)
     }
 }
-
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
         DetailsView(
