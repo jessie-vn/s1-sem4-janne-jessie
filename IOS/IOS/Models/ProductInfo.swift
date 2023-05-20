@@ -53,8 +53,15 @@ struct Ingredient: Decodable, Identifiable {
     let vegetarian: String?
     let ingredients: [Ingredient]?
     
+    var isUnknown: Bool {
+        return vegan == "maybe"
+    }
+    
     var isVegan: Bool {
-        return vegan == "yes"
+        if vegan != nil{
+            return vegan == "yes"
+        }
+        return true
     }
     
     var isVegetarian: Bool {
