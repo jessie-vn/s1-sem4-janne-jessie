@@ -58,6 +58,7 @@ struct DetailsView: View {
                         Text("This product is vegan")
                             .fontWeight(.bold)
                             .foregroundColor(Color(red: 0.006, green: 0.498, blue: -0.002))
+                            .font(.system(size: 20))
                     }
                     else {
                         Image("vegan-no")
@@ -66,6 +67,7 @@ struct DetailsView: View {
                         Text("This product is not vegan")
                             .fontWeight(.bold)
                             .foregroundColor(Color(red: 0.88, green: 0.271, blue: 0.273))
+                            .font(.system(size: 20))
                     }
                 }
                 .padding(.bottom, 10)
@@ -79,6 +81,7 @@ struct DetailsView: View {
                     .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                     .multilineTextAlignment(.center)
                     .padding()
+                    .padding(.top, -25)
                 
                 Text("Ingredient list")
                     .fontWeight(.bold)
@@ -88,12 +91,14 @@ struct DetailsView: View {
                         .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                         .multilineTextAlignment(.center)
                         .padding()
+                        .padding(.top, -25)
                 }
                 else{
                     Text(product.ingredients_text!)
                         .foregroundColor(Color(red: 0.30196078431372547, green: 0.45098039215686275, blue: 0.3764705882352941))
                         .multilineTextAlignment(.center)
                         .padding()
+                        .padding(.top, -25)
                 }
                 
                     HStack {
